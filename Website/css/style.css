@@ -172,8 +172,9 @@ hr {
   text-align: center; }
 
 header {
-  position: fixed;
+  z-index: 2;
   width: 100%;
+  position: fixed;
   top: 0; }
 
 #PrimaryHeader {
@@ -194,9 +195,11 @@ header {
     Sidebar
 ******************/
 #Sidebar {
+  z-index: 1;
   background-color: #ecf0f1;
   position: fixed;
-  top: 59px;
+  padding-top: 59px;
+  top: 0;
   bottom: 0;
   height: 100%;
   left: 0;
@@ -381,7 +384,8 @@ header {
 
 #ticket-charts-wrapper {
   background-color: #2ecc71;
-  padding: 25px; }
+  padding: 25px;
+  margin-bottom: 40px; }
   #ticket-charts-wrapper h1 {
     color: white;
     text-align: center; }

@@ -9,8 +9,9 @@
 }
 
 header {
-    position: fixed;
+        z-index: 2;
     width: 100%;
+    position: fixed;
     top: 0;
 }
 
@@ -38,9 +39,11 @@ header {
 ******************/
 
 #Sidebar {
+    z-index: 1;
     background-color: $sidebar;
     position: fixed;
-    top: 59px;
+    padding-top: 59px;
+    top: 0;
     bottom: 0;
     height: 100%;
     left: 0;

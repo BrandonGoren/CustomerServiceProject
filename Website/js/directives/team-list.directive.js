@@ -1,8 +1,9 @@
 ﻿(function () {
     'use strict';
-    var ticketsApp = angular.module('ticketsApp');
+    var ticketsApp = angular.module('ticketsApp')
+        .directive('teamList', teamList);
 
-    ticketsApp.directive('teamList', function () {
+    function teamList() {
         return {
             restrict: 'E',
             replace: 'true',
@@ -10,21 +11,25 @@
             controller: TeamController,
             controllerAs: 'vm',
             scope: {}
-        };
-    });
-
-    function TeamController($location, teamService) {
-        var vm = this;
-
-        vm.title = "Teams";
-
-        vm.goToTeam = function (teamId) {
-            $location.path('teams/' + teamId);
-        };
-
-        teamService.getAll().then(function (teams) {
-            vm.teams = teams;
-        });
+        }
     }
 
+    TeamController.$inject = ['$location', 'teamService'];
+    function TeamController($location, teamService) {
+        var vm = this;
+        vm.title = "Teams";
+        vm.teams = [];
+        vm.goToTeam = goToTeam;
+        activate();
+
+        function activate() {
+            teamService.getAll().then(function (teams) {
+                vm.teams = teams;
+            });
+        }
+
+        function goToTeam(teamId) {
+            $location.path('teams/' + teamId);
+        }
+    }
 })();

@@ -90,7 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\grid.css" />
-    <Content Include="index-2.html" />
     <Content Include="js\app.js" />
     <Content Include="js\controllers\ticket.controller.js" />
     <Content Include="js\libraries\angular.js" />

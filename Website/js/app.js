@@ -10,7 +10,7 @@
                 title: 'See Tickets'
             });
         $routeProvider.when('/', {
-            templateUrl: 'templates/see-tickets.html',
+            templateUrl: 'templates/home.html',
             title: 'Home'
         });
         $routeProvider.when('/open-ticket',
