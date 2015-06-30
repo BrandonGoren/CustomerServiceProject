@@ -1,0 +1,27 @@
+﻿<div id="form-wrapper" ng-controller="TicketCreatorController as vm">
+    <h1>Open Ticket</h1>
+    <form>
+        <fieldset>
+            <label for="name">Name of Issue:</label>
+            <input type="text" id="name" name="issue_name" ng-model="vm.ticket.name" />
+            <label>Affected Website</label>
+            <select id="website" name="website" ng-model="vm.ticket.websiteId">
+                <option ng-repeat="website in vm.websites" value="{{website.id}}">{{website.name}}</option>
+            </select>
+            <label>Type of Issue</label>
+            <select id="type_of_issue" name="type" ng-model="vm.ticket.issueType">
+                <option value="1">Back End</option>
+                <option value="2">Log In</option>
+                <option value="3">Typo</option>
+                <option value="4">User Interface</option>
+            </select>
+            <label>Issue Description:</label>
+            <textarea rows="8" id="issue" ng-model="vm.ticket.description"></textarea>
+            <label>Assigned To:</label>
+            <select id="team" name="team" ng-model="vm.ticket.assignedTeamId">
+                <option ng-repeat="team in vm.teams" value={{team.id}}>{{team.name}}</option>
+            </select>
+        </fieldset>
+        <button ng-disabled="vm.validTicket()" type="submit" class="green-flat-button" ng-click="vm.save()">Submit</button>
+    </form>
+</div>

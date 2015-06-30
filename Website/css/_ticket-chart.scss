@@ -1,0 +1,25 @@
+﻿#ticket-charts-wrapper {
+    background-color: $green-secondary;
+    padding: 25px;
+
+    h1 {
+        color: white;
+        text-align: center;
+    }
+
+}
+
+.data-chart {
+    border: 15px solid $green-primary;
+    background: $sidebar;
+    width: 100%;
+
+    h2 {
+        background-color: $green-primary;
+        color: white;
+        display: block;
+        padding: .5em;
+        text-align: center;
+    }
+
+}

@@ -1,0 +1,17 @@
+﻿<div id="team-table">
+    <div class="row padding-none">
+        <h1>{{vm.title}}</h1>
+    </div>
+    <div class="flex-row" id="table-title-row">
+     <div class="col-4-xs"><h3>Name</h3></div>  
+        <div class="col-4-xs"><h3>Team Members</h3></div>  
+        <div class="col-4-xs"><h3>Issues Assigned</h3></div>  
+    </div>
+    <div ng-repeat="team in vm.teams" ng-click="vm.goToTeam(team.id)">
+        <div class="flex-row table-row">
+            <div class="col-4-xs">{{team.name}}</div>
+            <div class="col-4-xs">{{team.teamMemberIds.length}}</div>
+            <div class="col-4-xs">{{team.assignedIssueIds.length}}</div>  
+        </div>
+    </div>
+</div>

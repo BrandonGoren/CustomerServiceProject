@@ -1,0 +1,28 @@
+﻿<div id="ticket-charts-wrapper">
+    <h1>Data Charts</h1>
+    <div class="row flex-row">
+        <div class="col-4-lg flex">
+            <div class="data-chart">
+                <h2>Issue Status</h2>
+                <canvas id="doughnut" class="chart chart-doughnut" data="vm.openData"
+                        labels="vm.openLabels" legend="true" colours="vm.colors"></canvas>
+            </div>
+        </div>
+        <div class="col-4-lg flex">
+            <div class="data-chart">
+                <h2>Team Assignments</h2>
+                <canvas id="doughnut" class="chart chart-doughnut" data="vm.teamData"
+                        labels="vm.teamLabels" legend="true"></canvas>
+                <button class="blue-flat-button" ng-click="vm.filterTeam()">{{vm.teamFilter ? "See All" : "See Open"}}</button>
+            </div>
+        </div>
+        <div class="col-4-lg flex">
+            <div class="data-chart">
+                <h2>Affected Websites</h2>
+                <canvas id="doughnut" class="chart chart-doughnut" data="vm.websiteData"
+                        labels="vm.websiteLabels" legend="true"></canvas>
+                <button class="blue-flat-button" ng-click="vm.filterWebsite()">{{vm.websiteFilter ? "See All" : "See Open"}}</button>
+            </div>
+        </div>
+    </div>
+</div>

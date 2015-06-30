@@ -1,0 +1,109 @@
+﻿/**********************
+    Header
+*********************/
+
+
+.title {
+    color: white;
+    text-align: center;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+#PrimaryHeader {
+    margin: 0;
+    background: $nav-color;
+    padding: 20px 0 15px;
+    color: white;
+
+    #logo {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: white;
+        text-decoration: none;
+        text-anchor: end;
+        text-align: center;
+    }
+
+    h1 {
+        margin: 0;
+    }
+}
+
+/*******************
+    Sidebar
+******************/
+
+#Sidebar {
+    background-color: $sidebar;
+    position: fixed;
+    top: 59px;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    width: 150px;
+    color: $sidebar-color;
+
+    .selected, a:hover {
+        color: white;
+        background-color: $sidebar-color;
+    }
+
+    h3 {
+        padding: 10px 5px;
+        margin-bottom: 0;
+        border-bottom: solid #c4c4c4 1px;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+
+        li {
+            border-bottom: solid #c4c4c4 1px;
+        }
+    }
+
+    a {
+        padding: 5px 10px 5px 20px;
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        width: 100%;
+        height: 100%;
+        font-size: 1.1em;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    /*@media(max-width: 640px) {
+        display: none;
+    }*/
+}
+
+#mobile-nav {
+    width: 95%;
+    margin: auto;
+    display: none;
+
+    /*@media (max-width: 640px) {
+        display: block;
+    }*/
+}
+
+/********************
+    Body
+********************/
+
+#Wrapper {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 90px 5% 10px 175px;
+
+    /*@media (max-width: 640px) {
+        padding: 90px 2.5% 10px;
+    }*/
+}

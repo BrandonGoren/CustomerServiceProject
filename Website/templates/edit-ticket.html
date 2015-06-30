@@ -1,0 +1,44 @@
+﻿<div id="ticket-wrapper" ng-controller="TicketEditController as vm">
+    <div id="ticket">
+        <h1><input type="text" ng-model="vm.ticket.name" placeholder="Ticket Name" /> ({{vm.ticket.open ? "Open" : "Closed"}})</h1>
+        <section>
+            <h2 class="inline-left">
+                Website: <select ng-model="vm.ticket.websiteId">
+                    <option ng-repeat="website in vm.websites" value="{{website.id}}" ng-selected="website.id === vm.ticket.websiteId">{{website.name}}</option>
+                </select>
+            </h2> 
+            <h2 class="inline-right"> Issue Type: <span class="ticket-info">{{vm.ticket.issueType}}</span></h2>
+            <hr class="clear-both" />
+            <h2>Opened: <span class="ticket-info">{{vm.ticket.dateRaised | date: 'short'}}</span></h2>
+            <h2 ng-show="!vm.ticket.open">Closed: <span class="ticket-info">{{vm.ticket.dateClosed | date: 'short'}}</span></h2>
+            <hr />
+            <h2>
+                Assigned Team: <select ng-model="vm.ticket.assignedTeamId">
+                    <option ng-repeat="team in vm.teams" value="{{team.id}}" ng-selected="team.id === vm.ticket.assignedTeamId">{{team.name}}</option>
+                </select>
+            </h2> 
+            <hr />
+            <h2>Affected Customers: <span class="ticket-info">{{vm.ticket.affectedCustomersIds.length}}</span></h2>
+            <hr />
+            <h2>Description:</h2>
+            <textarea class="ticket-info" id="description" ng-model="vm.ticket.description">{{vm.ticket.description}}</textarea>
+            <hr />
+            <h2>Notes:</h2>
+            <ul id="notes">
+                <li class="ticket-info" ng-show="vm.ticket.notes.length == 0"> There are no notes here </li>
+                <li class="ticket-info" ng-repeat="note in vm.ticket.notes">{{note.content}} ({{note.date | date: 'short'}})</li>
+            </ul>
+            <div class="row">
+                <div class="col-4-sm">
+                    <button type="submit" class="blue-flat-button" ng-click="vm.saveEdits()">Save</button>
+                </div>
+                <div class="col-4-sm">
+                    <button type="submit" class="red-flat-button" ng-click="vm.deleteTicket()">Delete</button>
+                </div>
+                <div class="col-4-sm">
+                    <button type="submit" class="purple-flat-button" ng-click="vm.cancelEdits()">Cancel</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

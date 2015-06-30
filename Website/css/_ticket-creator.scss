@@ -1,0 +1,63 @@
+﻿#form-wrapper {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    background-color: $purple-primary;
+
+        h1 {
+        @include title-white;
+        font-size: 2em;
+        text-align: center;
+        background-color: $purple-primary;
+        padding: 20px 0;
+        margin: 0;
+    }
+
+
+}
+
+form {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    background-color: white;
+
+    @media(max-width: 660px) {
+        width: 90%;
+    }
+
+    input, textarea, select {
+        margin: 0 0 30px 70px;
+        width: 60%;
+        color: $red-primary;
+        font-size: 1.1rem;
+        background-color: $sidebar;
+        display: block;
+        border: none;
+        padding: 5px;
+        @media(max-width: 660px) {
+            width: 80%;
+            margin: 0 0 20px 5px;
+            font-size: .8em;
+        }
+    }
+
+    label {
+        text-align: left;
+        margin-left: 70px;
+        font-size: 1.3em;
+
+        @media(max-width: 660px) {
+            font-size: 1.1em;
+            margin-left: 5px;
+        }
+    }
+
+    fieldset {
+        border: none;
+        margin: 0;
+    }
+}

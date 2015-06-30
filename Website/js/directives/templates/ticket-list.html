@@ -1,0 +1,51 @@
+﻿<div id="ticket-table">
+    <div class="row">
+        <div class="col-6-lg col-12-xs padding-none">
+            <h1>{{vm.title}}</h1>
+        </div>
+        <div class="col-3-lg col-6-xs padding-none">
+            <button class="red-flat-button" ng-click="vm.toggleOpenFilter()">See {{vm.showOpenOnly ? "All" : "Open"}}</button>
+        </div>
+        <div class="col-3-lg col-6-xs padding-none">
+            <button class="red-flat-button" ng-click="vm.toggleClosedFilter()">See {{vm.showClosedOnly ? "All" : "Closed"}}</button>
+        </div>
+    </div>
+    <div class="flex-row" id="table-title-row">
+        <div class="col-3-xs col-2-md " ng-click="vm.reverse=!vm.reverse; vm.order('name', vm.reverse)">
+            <h3>Name</h3>
+        </div>
+        <div class="col-1-xs col-2-md type">
+            <h3>Type</h3>
+        </div>
+        <div class="col-3-xs col-2-md">
+            <h3>
+                Website
+            </h3>
+        </div>
+        <div class="col-1-xs col-2-md team" ng-click="vm.reverse=!vm.reverse; vm.order('assignedTeamId', vm.reverse)">
+            <h3>
+                Team
+            </h3>
+        </div>
+        <div class="col-3-xs col-2-md" ng-click="vm.reverse=!vm.reverse; vm.order('open', vm.reverse)">
+            <h3>
+                Status
+            </h3>
+        </div>
+        <div class="date col-1-xs col-2-md " ng-click="vm.reverse=!vm.reverse; vm.order('dateRaised', vm.reverse)">
+            <h3>
+                Opened
+            </h3>
+        </div>
+    </div>
+    <div ng-repeat="ticket in vm.ticketsToShow" ng-click="vm.goToTicket(ticket.id)">
+        <div class="flex-row table-row">
+            <div class="col-3-xs col-2-md ">{{ticket.name}}</div>
+            <div class="type col-1-xs col-2-md">{{ticket.issueType}}</div>
+            <div class="col-3-xs col-2-md ">{{ticket.website.name}}</div>
+            <div class=" team col-1-xs col-2-md">{{ticket.team.name}}</div>
+            <div class="col-3-xs col-2-md ">{{ticket.open ? "Open" : "Closed"}}</div>
+            <div class="date col-1-xs col-2-md">{{ticket.dateRaised | date: 'short'}}</div>
+        </div>
+    </div>
+</div>
