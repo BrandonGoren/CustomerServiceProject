@@ -26,12 +26,14 @@
             {
                 templateUrl: 'templates/ticket-details.html',
                 controller: 'TicketDetailController',
+                controllerAs: 'vm',
                 title: 'Ticket Detail'
             })
         .when('/edit-ticket/:ticketId',
             {
                 templateUrl: 'templates/edit-ticket.html',
                 controller: 'TicketEditController',
+                controllerAs: 'vm',
                 title: 'Edit Ticket'
             })
         .when('/see-teams',

@@ -64,7 +64,6 @@
     <Content Include="index.html" />
     <Content Include="js\earlybirds.routes.js" />
     <Content Include="js\earlybirds.module.js" />
-    <Content Include="js\controllers\ticket-chart.controller.js" />
     <Content Include="js\directives\team-list.directive.js" />
     <Content Include="js\directives\templates\team-list.html" />
     <Content Include="js\directives\ticket-chart.directive.js" />
@@ -90,8 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\grid.css" />
-    <Content Include="js\app.js" />
-    <Content Include="js\controllers\ticket.controller.js" />
     <Content Include="js\libraries\angular.js" />
     <Content Include="js\nav-bar-dropdown.js" />
   </ItemGroup>

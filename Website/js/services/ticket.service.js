@@ -3,77 +3,88 @@
 
     angular
         .module('ticketsApp')
-        .factory('ticketService', ['$http', function ($http) {
-            return {
+        .factory('ticketService', ticketService);
 
-                getAll: function () {
-                    return $http.get('http://localhost:2001/issues').
-                        error(function (error) {
-                            alert(error);
-                            return error;
-                        }).then(function (response) {
-                            return response.data;
-                        })
-                },
+    ticketService.$inject = ['$http'];
+            
+    function ticketService($http) {
+        return {
+            getAll: getAll,
+            getTicket: getTicket, 
+            saveTicket: saveTicket,
+            addNote: addNote,
+            editTicket: editTicket,
+            deleteTicket: deleteTicket,
+            closeTicket: closeTicket
+        };
 
-                getTicket: function (ticketId) {
-                    return $http.get('http://localhost:2001/issues/' + ticketId).
-                    error(function (error) {
-                        return error
-                    }).then(function (response) {
-                        return response.data;
-                    });
-                },
+        function getAll () {
+            return $http.get('http://localhost:2001/issues').
+                error(function (error) {
+                    alert(error);
+                    return error;
+                }).then(function (response) {
+                    return response.data;
+                })
+        }
 
-                saveTicket: function (ticket) {
-                    return $http.post('http://localhost:2001/issues', ticket).
-                        success(function (response) {
-                            console.log(response);
-                        }).error(function (error) {
-                            alert(error)
-                        });
-                },
+        function getTicket (ticketId) {
+            return $http.get('http://localhost:2001/issues/' + ticketId).
+            error(function (error) {
+                return error
+            }).then(function (response) {
+                return response.data;
+            });
+        }
 
-                addNote: function (ticket, note) {
-                    return $http.put('http://localhost:2001/issues/' + ticket.id + '/add-note', note).
-                    error(function (error) {
-                        alert(error)
-                    }).then(function (response) {
-                        return response.data;
-                    });
-                },
+        function saveTicket (ticket) {
+            return $http.post('http://localhost:2001/issues', ticket).
+                success(function (response) {
+                    console.log(response);
+                }).error(function (error) {
+                    alert(error)
+                });
+        }
 
-                editTicket: function (ticket) {
-                    return $http.put('http://localhost:2001/issues/' + ticket.id, ticket).
-                        success(function (response) {
-                            console.log(response);
-                        }).error(function (error) {
-                            alert(error)
-                        }).then(function (response) {
-                            return response.data;
-                        });
-                },
+        function addNote (ticket, note) {
+            return $http.put('http://localhost:2001/issues/' + ticket.id + '/add-note', note).
+            error(function (error) {
+                alert(error)
+            }).then(function (response) {
+                return response.data;
+            });
+        }
 
-                deleteTicket: function (ticket) {
-                    return $http.delete('http://localhost:2001/issues/' + ticket.id, ticket).
-                        success(function (response) {
-                            console.log(response);
-                        }).error(function (error) {
-                            alert(error)
-                        }).then(function (response) {
-                            return response.data;
-                        });
-                },
+        function editTicket (ticket) {
+            return $http.put('http://localhost:2001/issues/' + ticket.id, ticket).
+                success(function (response) {
+                    console.log(response);
+                }).error(function (error) {
+                    alert(error)
+                }).then(function (response) {
+                    return response.data;
+                });
+        }
 
-                closeTicket: function (ticketId) {
-                    return $http.put('http://localhost:2001/issues/' + ticketId + '/close-issue').success(function (response) {
-                        console.log('ticket closed');
-                    }).error(function (error) {
-                        alert(error)
-                    }).then(function (response) {
-                        return response.data;
-                    });
-                }
-            }
-        }])
+        function deleteTicket (ticket) {
+            return $http.delete('http://localhost:2001/issues/' + ticket.id, ticket).
+                success(function (response) {
+                    console.log(response);
+                }).error(function (error) {
+                    alert(error)
+                }).then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function closeTicket (ticketId) {
+            return $http.put('http://localhost:2001/issues/' + ticketId + '/close-issue').success(function (response) {
+                console.log('ticket closed');
+            }).error(function (error) {
+                alert(error)
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+    }
 })();

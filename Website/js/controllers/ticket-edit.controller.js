@@ -1,41 +1,54 @@
 ﻿(function () {
     'use strict';
 
-    var ticketsApp = angular.module('ticketsApp');
-    ticketsApp.controller("TicketEditController", function ($routeParams, $location, ticketService, websiteService, teamService) {
+    angular.module('ticketsApp')
+       .controller("TicketEditController", TicketEditController);
+
+    TicketEditController.$inject = ['$routeParams', '$location', 'ticketService', 'websiteService', 'teamService'];
+    function TicketEditController($routeParams, $location, ticketService, websiteService, teamService) {
+
         var vm = this;
-        ticketService.getTicket($routeParams.ticketId).then(function (tickets) {
-            console.log(tickets);
-            vm.ticket = tickets;
-        });
+        vm.ticket = [];
+        vm.getOpen = getOpen;
+        vm.saveEdits = saveEdits;
+        vm.cancelEdits = cancelEdits;
+        vm.deleteTicket = deleteTicket;
 
-        teamService.getAll().then(function (teams) {
-            vm.teams = teams;
-        });
+        activate();
 
-        websiteService.getAll().then(function (websites) {
-            vm.websites = websites;
-        });
+        function activate() {
+            ticketService.getTicket($routeParams.ticketId).then(function (tickets) {
+                console.log(tickets);
+                vm.ticket = tickets;
+            });
 
-        vm.getOpen = function (ticket) {
+            teamService.getAll().then(function (teams) {
+                vm.teams = teams;
+            });
+
+            websiteService.getAll().then(function (websites) {
+                vm.websites = websites;
+            });
+        }
+
+        function getOpen(ticket) {
             return ticket.open ? "open" : "closed";
-        };
+        }
 
-        vm.saveEdits = function () {
+        function saveEdits() {
             ticketService.editTicket(vm.ticket).then(function (response) {
                 $location.path('/tickets/' + response.id);
             });
         }
 
-        vm.cancelEdits = function () {
+        function cancelEdits() {
             $location.path('/tickets/' + vm.ticket.id);
         }
 
-        vm.deleteTicket = function () {
+        function deleteTicket() {
             ticketService.deleteTicket(vm.ticket).then(function (response) {
                 $location.path('/see-tickets');
             });
         }
     }
-    );
 })();

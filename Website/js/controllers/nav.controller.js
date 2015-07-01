@@ -1,11 +1,16 @@
 ﻿(function () {
     'use strict';
 
-    var ticketsApp = angular.module('ticketsApp');
-    ticketsApp.controller("NavController", function ($location) {
+    angular.module('ticketsApp')
+        .controller("NavController", NavController);
+
+    NavController.$inject = ['$location'];
+    function NavController ($location) {
         var vm = this;
-        vm.isActive = function (viewLocation) {
+        vm.isActive = isActive;
+        
+        function isActive (viewLocation) {
             return viewLocation === $location.path();
         }
-    });
+    }
 })();

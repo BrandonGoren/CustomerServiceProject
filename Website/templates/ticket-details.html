@@ -1,6 +1,5 @@
-﻿<div id="ticket-wrapper" ng-controller="TicketDetailController as vm">
+﻿<div id="ticket-wrapper">
     <div id="ticket">
-        <!--<a  href="/see-tickets" class="back-button"><img src="Media/back-arrow.png" height="50" width="50" /></a>-->
         <h1 ng-class="{open: vm.ticket.open, closed : !vm.ticket.open}">{{vm.ticket.name}} ({{vm.ticket.open ? "Open" : "Closed"}})</h1>
         <section>
             <h2 class="inline-left">Website: <span class="ticket-info">{{vm.ticket.website.name}}</span></h2>
