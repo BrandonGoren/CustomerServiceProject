@@ -1,6 +1,5 @@
 ﻿$nav-color: #2980b9;
 $sidebar-color: #2c3e50;
-$primary-color: #c0392b;
 $secondary-color: #e74c3c;
 $red-primary: #c0392b;
 $red-secondary: #e74c3c;
@@ -8,13 +7,12 @@ $blue-primary: #2980b9;
 $blue-secondary: #3498db;
 $green-primary: #27ae60;
 $green-secondary: #2ecc71;
+$aqua-primary: #16a085;
+$aqua-secondary:#1abc9c;
 $dark-blue-primary: #2c3e50;
 $dark-blue-secondary: #34495e;
-/*$purple-primary: #1F3A93;*/
 $purple-primary: #8e44ad;
 $purple-secondary: #9b59b6;
-$dark-primary: darken($primary-color, 5);
-$hover: lighten(complement($primary-color), 40);
 $background: #bdc3c7;
 $sidebar: #ecf0f1;
 
@@ -36,10 +34,12 @@ $sidebar: #ecf0f1;
     }
 
     &:active {
-        background: darken($color, 10);
-        box-shadow: 0 5px 0 0 $color;
+        background: darken($color, 5);
+        box-shadow: 0 2.5px 0 0 darken($color, 10);
     }
-
+    &:focus {
+        outline: 0;
+    }
     &:disabled {
         color: darkgray;
         background: lighten(desaturate($color, 40), 40);
@@ -61,11 +61,16 @@ $sidebar: #ecf0f1;
     }
 
     h1 {
-        margin: 30px auto 0;
-        padding-bottom: 40px;
-        text-align: center;
+        margin: 0;
+        line-height: 2.5rem;
+        padding: 40px 0 40px 30%;
         font-size: 2.5rem;
         color: white;
+    }
+
+    .table-button {
+        float: right;
+        margin: 30px 10px;
     }
 
     .table-row {
@@ -107,10 +112,6 @@ body {
     background-color: $background;
 }
 
-.primary-flat-button {
-    @include button($primary-color);
-}
-
 .red-flat-button {
     @include button($red-primary);
 }
@@ -150,10 +151,6 @@ body {
 
 .padding-none {
     padding: 0;
-}
-
-.primary-color {
-    color: $primary-color;
 }
 
 .back-button {

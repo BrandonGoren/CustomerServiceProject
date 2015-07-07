@@ -29,10 +29,26 @@ namespace Domain
             this.Open = true;
         }
 
+        public Issue(int id, string name, DateTime dateRaised, DateTime? dateClosed, bool open, Website website, TypeOfIssue type, string description, int assignedTeamId, HashSet<Customer> customers)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Open = open;
+            this.DateRaised = dateRaised;
+            this.DateClosed = dateClosed;
+            this.Website = website;
+            this.IssueType = type;
+            this.Description = description;
+            this.AssignedTeamId = assignedTeamId;
+            this.AffectedBrowsers = new HashSet<WebBrowser>();
+            this.AffectedCustomers = new HashSet<Customer>(customers);
+            this.Notes = new List<Notes>();
+        }
+
         public int Id { get; }
         public string Name { get; set; }
         public DateTime DateRaised { get; private set; }
-        public DateTime DateClosed { get; private set; }
+        public DateTime? DateClosed { get; private set; }
         public bool Open { get; set; }
         public string Description { get; set; }
         public ISet<Customer> AffectedCustomers { get; private set; }

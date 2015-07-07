@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using System.Web;
 
 namespace Domain
 {
@@ -18,7 +24,6 @@ namespace Domain
             this.Teams = new HashSet<Team>();
             this.Agents = new HashSet<Agent>();
             this.CustomerAccounts = new HashSet<Customer>();
-            this.Issues = new HashSet<Issue>();
         }
 
         public int Id { get; }
@@ -27,7 +32,13 @@ namespace Domain
         public ISet<Team> Teams { get; }
         public ISet<Agent> Agents { get; }
         public ISet<Customer> CustomerAccounts { get; }
-        public ISet<Issue> Issues { get; }
+        public ISet<Issue> Issues
+        {
+            get
+            {
+                return this.GetIssuesFromDatabase();
+            }
+        }
 
         public Company SampleCompany()
         {
@@ -56,17 +67,84 @@ namespace Domain
             Customer bort = new Customer("Bort");
             this.CustomerAccounts.Add(bort);
             this.CustomerAccounts.Add(new Customer("Lisa"));
-            Issue testIssue = new Issue("Hello World", estateSales, TypeOfIssue.Database, "hello world", bort);
-            testIssue.Notes.Add(new Notes("this is a note"));
-            Issue doh = new Issue("Closed Issue", estateSales, TypeOfIssue.Database, "This should be closed", homer);
-            testIssue.AssignedTeamId = ATeam.Id;
-            doh.AssignedTeamId = ATeam.Id;
-            this.Issues.Add(testIssue);
-            this.Issues.Add(doh);
-
-            //DatabaseTest.GetIssues().ToList().ForEach(i => this.Issues.Add(i));
-            doh.CloseIssue();
             return this;
+        }
+
+        public ISet<Issue> GetIssuesFromDatabase()
+        {
+            ISet<Issue> output = new HashSet<Issue>();
+            SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
+            DbCommand cmd = db.GetSqlStringCommand("SELECT * FROM Issue");
+            DataSet ds = db.ExecuteDataSet(cmd);
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                int id = (int)row["IssueId"];
+                string name = (string)row["Name"];
+                DateTime dateRaised = (DateTime)row["DateRaised"];
+
+                object obj = row["DateClosed"];
+                DateTime? dateClosed = obj == DBNull.Value ? null : (DateTime?)obj;
+
+                bool open = (bool)row["Open"];
+                string description = (string)row["Description"];
+                int assignedTeamId = (int)row["AssignedTeamId"];
+                int issueTypeId = (int)row["IssueTypeId"];
+                int websiteId = (int)row["WebsiteId"];
+                HashSet<Customer> customers = new HashSet<Customer>();
+                Issue issue = new Issue(id, name, dateRaised, dateClosed, open, this.OwnedWebsites.FirstOrDefault(i => i.Id == websiteId), TypeOfIssue.UI, description, 1, customers);
+                issue.AssignedTeamId = assignedTeamId;
+                DbCommand noteCmd = db.GetSqlStringCommand(string.Format("Select * FROM Note WHERE IssueId={0}", issue.Id));
+                DataSet notes = db.ExecuteDataSet(noteCmd);
+                foreach (DataRow noteRow in notes.Tables[0].Rows)
+                {
+                    int noteId = (int)noteRow["NoteId"];
+                    string content = (string)noteRow["Content"];
+                    DateTime noteDate = (DateTime)noteRow["Date"];
+                    issue.Notes.Add(new Notes(noteId, content, noteDate));
+                }
+                output.Add(issue);
+            }
+            return output;
+        }
+
+        public void InsertIssue(Issue issue)
+        {
+            SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
+            string sqlString = string.Format("INSERT INTO Issue(Name, Description, AssignedTeamId, IssueTypeId, WebsiteId) values('{0}', '{1}', {2}, {3}, {4});", issue.Name, issue.Description, issue.AssignedTeamId, '3', issue.Website.Id);
+            DbCommand cmd = db.GetSqlStringCommand(sqlString);
+            db.ExecuteNonQuery(cmd);
+        }
+
+        public void AddNote(Issue issue, Notes note)
+        {
+            SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
+            string sqlString = string.Format("INSERT INTO Note(Content, IssueId) values('{0}', {1});", note.Content, issue.Id);
+            DbCommand cmd = db.GetSqlStringCommand(sqlString);
+            db.ExecuteNonQuery(cmd);
+        }
+
+        public void CloseIssue(Issue issue)
+        {
+            SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
+            string sqlString = string.Format("Update Issue SET [Open]=0, DateClosed=GETUTCDATE() WHERE IssueId = {0};", issue.Id);
+            DbCommand cmd = db.GetSqlStringCommand(sqlString);
+            db.ExecuteNonQuery(cmd);
+        }
+
+        public void UpdateIssue(Issue issue)
+        {
+            SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
+            string sqlString = string.Format("UPDATE ISSUE SET Name='{1}', Description='{2}', WebsiteId={3}, AssignedTeamId={4} WHERE IssueId = {0};", issue.Id, issue.Name, issue.Description, issue.Website.Id, issue.AssignedTeamId);
+            DbCommand cmd = db.GetSqlStringCommand(sqlString);
+            db.ExecuteNonQuery(cmd);
+        }
+
+        public void DeleteIssue(Issue issue)
+        {
+            SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
+            string sqlString = string.Format("DELETE ISSUE WHERE IssueId = {0};", issue.Id);
+            DbCommand cmd = db.GetSqlStringCommand(sqlString);
+            db.ExecuteNonQuery(cmd);
         }
     }
 }

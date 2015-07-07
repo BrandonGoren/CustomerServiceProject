@@ -1,0 +1,24 @@
+﻿#team-creator {
+    display: inline;
+    padding:  30px 20px;
+    background-color: $purple-secondary;
+    margin-bottom: 500px;
+
+    label {
+        font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+            margin: 0;
+    }
+    input {
+        height: 100%;
+        font-size: 1.5rem;
+        margin-left: 10px;
+        color: black;
+    }
+
+    .green-flat-button {
+        display: inline-block;
+        margin-left: 20px;
+    }
+}

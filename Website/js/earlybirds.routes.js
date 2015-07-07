@@ -9,8 +9,8 @@
     function config($routeProvider, $locationProvider) {
         $routeProvider.when('/',
             {
-            templateUrl: 'templates/home.html',
-            title: 'Home'
+                templateUrl: 'templates/home.html',
+                title: 'Home'
             })
         .when('/see-tickets',
             {
@@ -20,6 +20,8 @@
         .when('/open-ticket',
             {
                 templateUrl: 'templates/open-ticket.html',
+                controller: 'TicketCreatorController',
+                controllerAs: 'vm',
                 title: 'Open Ticket'
             })
         .when('/tickets/:ticketId',
@@ -36,10 +38,16 @@
                 controllerAs: 'vm',
                 title: 'Edit Ticket'
             })
-        .when('/see-teams',
+        .when('/teams',
             {
                 templateUrl: 'templates/see-teams.html',
                 title: 'See Teams'
+            })
+        .when('/teams/:teamId', 
+            {
+                templateUrl: 'templates/team-details.html',
+                controller: 'TeamDetailController',
+                controllerAs: 'vm'
             });
 
         $locationProvider.html5Mode(true)

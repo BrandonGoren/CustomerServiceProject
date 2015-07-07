@@ -1,81 +1,77 @@
-﻿ #ticket {
-        width: 90%;
-        max-width: 675px;
-        min-width: 526.5px;
-        margin: 0 auto;
-        padding-bottom: 10px;
-        color: white;
-        background-color: $purple-primary;
+﻿@mixin detail-view($primary-color) {
+    width: 90%;
+    max-width: 675px;
+    min-width: 526.5px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    color: white;
+    background-color: $primary-color;
 
-        h1 {
-            @include title-white;
-            font-size: 2em;
-            text-align: center;
-            padding: 20px 0;
-            margin-bottom: 0;
-            line-height: 1.5em;
-            display: block;
+    h1 {
+        @include title-white;
+        font-size: 2em;
+        text-align: center;
+        padding: 20px 0;
+        margin-bottom: 0;
+        line-height: 1.5em;
+        display: block;
 
-            @media(max-width: 660px) {
-                padding: 10px;
-            }
-        }
-
-        h2 {
-            font-size: 1.2rem;
-        }
-
-        .closed {
-            background-color: $red-primary;
-        }
-
-        section {
-            background-color: white;
-            border: solid 25px $purple-primary;
-            border-top: none;
-            color: black;
-            padding: 2em 10%;
-        }
-
-        .ticket-info {
-            color: $red-primary;
-        }
-
-        #description {
-            font-family: sans-serif;
-            margin: 0 30px 30px;
-            font-size: 1.2em;
-            padding: .5rem 5%;
-            background-color: #eee;
-        }
-
-        textarea {
-            width: 90%;
-            height: 150px;
-            resize: none;
-        }
-
-        #add-note-box {
-            margin: 0 30px 30px;
-            font-size: 1.2em;
-            padding: .5rem 5%;
-            background-color: #eee;
-        }
-
-        #notes {
-            font-family: sans-serif;
-            min-height: 1.2em;
-            margin: 0 30px 30px;
-            font-size: 1.2em;
-            padding: .5rem 5%;
-            background-color: #eee;
+        @media(max-width: 660px) {
+            padding: 10px;
         }
     }
 
- #button-stack {
-     background: $sidebar;
-     padding: 20px 0;
-     width: 200px;
-     margin-left: 40px;
+    h2 {
+        font-size: 1.2rem;
+    }
 
- }
+    section {
+        background-color: white;
+        border: solid 25px $primary-color;
+        border-top: none;
+        color: black;
+        padding: 2em 10%;
+    }
+
+    .info {
+        color: $red-primary;
+    }
+}
+
+#ticket {
+   @include detail-view($purple-primary);
+
+    .closed {
+        background-color: $red-primary;
+    }
+
+    #description {
+        font-family: sans-serif;
+        margin: 0 30px 30px;
+        font-size: 1.2em;
+        padding: .5rem 5%;
+        background-color: #eee;
+    }
+
+    textarea {
+        width: 90%;
+        height: 150px;
+        resize: none;
+    }
+
+    #add-note-box {
+        margin: 0 30px 30px;
+        font-size: 1.2em;
+        padding: .5rem 5%;
+        background-color: #eee;
+    }
+
+    #notes {
+        font-family: sans-serif;
+        min-height: 1.2em;
+        margin: 0 30px 30px;
+        font-size: 1.2em;
+        padding: .5rem 5%;
+        background-color: #eee;
+    }
+}

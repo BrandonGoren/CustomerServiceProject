@@ -62,6 +62,20 @@ namespace WebApi.Controllers
             }
         }
 
+        [Route("{id:int}/agents")]
+        public IHttpActionResult GetAgents(int id)
+        {
+            Team team = this.teams.FirstOrDefault(i => i.Id == id);
+            if (team == null)
+            {
+                return this.NotFound();
+            }
+            else
+            {
+                return this.Ok(AgentConverter.ToDto(team.TeamMembers));
+            }
+        }
+
         [Route("{id:int}/issues/{stateString}")]
         public IHttpActionResult GetFilteredIssues(int id, string stateValue)
         {

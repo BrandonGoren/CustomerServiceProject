@@ -30,6 +30,7 @@
         vm.toggleOpenFilter = toggleOpenFilter;
         vm.toggleClosedFilter = toggleClosedFilter;
         vm.goToTicket = goToTicket;
+        vm.goToCreateTicket = goToCreateTicket;
 
         activate();
 
@@ -57,6 +58,10 @@
 
         function goToTicket(ticketId) {
             $location.path('tickets/' + ticketId);
+        }
+
+        function goToCreateTicket() {
+            $location.path('open-ticket/');
         }
 
         function toggleOpenFilter() {

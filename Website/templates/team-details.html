@@ -1,0 +1,26 @@
+﻿<div id="team-detail-wrapper">
+    <h1>{{vm.team.name}}</h1>
+    <div class="flex-row">
+        <div class="col-6-md">
+            <div class="data-pane">
+                <h2>Agents</h2>
+                <ul>
+                    <li ng-repeat="agent in vm.agents">{{agent.name}}</li>
+                    <li ng-show="vm.agents.length === 0">No Agents On Team</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-6-md">
+            <div class="data-pane">
+                <h2>Tickets</h2>
+                <ul>
+                    <li ng-repeat="ticket in vm.tickets" ng-click="vm.goToTicket(ticket.id)">
+                        {{ticket.name}} <span class="float-right">({{ticket.open ? "open" : "closed"}})</span>
+                    </li>
+                    <li ng-show="vm.tickets.length === 0">No Tickets Assigned</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="red-flat-button float-right" ng-click="vm.deleteTeam()">Delete Team</button>
+</div>

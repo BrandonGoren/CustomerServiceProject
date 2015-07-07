@@ -9,7 +9,7 @@
 }
 
 header {
-        z-index: 2;
+    z-index: 2;
     width: 100%;
     position: fixed;
     top: 0;
@@ -20,7 +20,8 @@ header {
     background: $nav-color;
     padding: 20px 0 15px;
     color: white;
-
+    box-shadow: darken($nav-color, 10) 0 5px 0 0;
+    /*border-radius:0 0 5px 5px;*/
     #logo {
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         color: white;
@@ -42,13 +43,19 @@ header {
     z-index: 1;
     background-color: $sidebar;
     position: fixed;
-    padding-top: 59px;
+    padding-top: 64px;
     top: 0;
     bottom: 0;
     height: 100%;
     left: 0;
     width: 150px;
     color: $sidebar-color;
+
+    a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
 
     .selected, a:hover {
         color: white;
@@ -68,20 +75,16 @@ header {
 
         li {
             border-bottom: solid #c4c4c4 1px;
+
+            a {
+                padding: 5px 10px 5px 20px;
+                width: 100%;
+                height: 100%;
+                font-size: 1.1em;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
         }
     }
-
-    a {
-        padding: 5px 10px 5px 20px;
-        display: block;
-        text-decoration: none;
-        color: inherit;
-        width: 100%;
-        height: 100%;
-        font-size: 1.1em;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-
     /*@media(max-width: 640px) {
         display: none;
     }*/
@@ -91,7 +94,6 @@ header {
     width: 95%;
     margin: auto;
     display: none;
-
     /*@media (max-width: 640px) {
         display: block;
     }*/
@@ -105,7 +107,6 @@ header {
     max-width: 1500px;
     margin: 0 auto;
     padding: 90px 5% 10px 175px;
-
     /*@media (max-width: 640px) {
         padding: 90px 2.5% 10px;
     }*/

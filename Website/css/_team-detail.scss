@@ -1,0 +1,45 @@
+﻿#team-detail-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    background-color: $aqua-primary;
+    padding: 20px 20px 0 20px;
+
+    > h1 {
+        color: white;
+        text-align: center;
+        display: block;
+        padding: 15px;
+        font-size: 2.5em;
+    }
+
+    h2 {
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .data-pane {
+        background-color: $aqua-secondary;
+    }
+
+    ul {
+        background: $sidebar;
+        padding-left: 0;
+        min-height: 400px;
+
+        li {
+            list-style: none;
+            padding: 5px 20px;
+            border-bottom: solid #c4c4c4 1px;
+            font-weight: bold;
+            font-family: sans-serif;
+            color: $dark-blue-primary;
+
+            &:hover {
+                background-color: lighten(complement($aqua-primary), 60);
+                cursor: pointer;
+            }
+        }
+    }
+}

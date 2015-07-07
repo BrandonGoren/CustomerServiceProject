@@ -12,7 +12,7 @@ namespace Service.Dto
         public int? Id { get; set; }
         public string Name { get; set; }
         public DateTime DateRaised { get; set; }
-        public DateTime DateClosed { get; set; }
+        public DateTime? DateClosed { get; set; }
         public bool Open { get; set; }
         public string Description { get; set; }
         public IEnumerable<int> AffectedCustomersIds { get; set; }

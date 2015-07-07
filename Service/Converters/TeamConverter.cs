@@ -30,10 +30,16 @@ namespace Service.Converters
         public static Dmn.Team ToNewDmn(Dto.Team dataObject)
         {
             Dmn.Team output = new Dmn.Team(dataObject.Name);
-            output.AddTeamMembers(Dmn.DatabaseTest.SampleCompany.Agents.Where(i => dataObject.TeamMemberIds.Contains(i.Id)));
-            foreach (Dmn.TypeOfIssue field in dataObject.Expertise)
+            if (dataObject.TeamMemberIds != null)
             {
-                output.Expertise.Add(field);
+                output.AddTeamMembers(Dmn.DatabaseTest.SampleCompany.Agents.Where(i => dataObject.TeamMemberIds.Contains(i.Id)));
+            }
+            if (dataObject.Expertise != null)
+            {
+                foreach (Dmn.TypeOfIssue field in dataObject.Expertise)
+                {
+                    output.Expertise.Add(field);
+                }
             }
             return output;
         }
@@ -43,7 +49,7 @@ namespace Service.Converters
             team.Name = teamData.Name;
             team.TeamMembers.Clear();
             team.Expertise.Clear();
-            foreach(Dmn.TypeOfIssue field in teamData.Expertise)
+            foreach (Dmn.TypeOfIssue field in teamData.Expertise)
             {
                 team.Expertise.Add(field);
             }

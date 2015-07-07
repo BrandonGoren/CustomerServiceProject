@@ -1,28 +1,5 @@
-/*$purple-primary: #1F3A93;*/
 body {
   background-color: #bdc3c7; }
-
-.primary-flat-button {
-  color: #ffffff;
-  font-size: 20px;
-  border: none;
-  box-shadow: 0 5px 0 0 #962d22;
-  background: #c0392b;
-  height: 50px;
-  width: 125px;
-  text-decoration: none;
-  margin: 10px auto;
-  display: block;
-  border-radius: 10px; }
-  .primary-flat-button:hover {
-    background: #b63629; }
-  .primary-flat-button:active {
-    background: #962d22;
-    box-shadow: 0 5px 0 0 #c0392b; }
-  .primary-flat-button:disabled {
-    color: darkgray;
-    background: #e4d5d3;
-    box-shadow: 0 5px 0 0 #d0b6b4; }
 
 .red-flat-button {
   color: #ffffff;
@@ -39,8 +16,10 @@ body {
   .red-flat-button:hover {
     background: #b63629; }
   .red-flat-button:active {
-    background: #962d22;
-    box-shadow: 0 5px 0 0 #c0392b; }
+    background: #ab3326;
+    box-shadow: 0 2.5px 0 0 #962d22; }
+  .red-flat-button:focus {
+    outline: 0; }
   .red-flat-button:disabled {
     color: darkgray;
     background: #e4d5d3;
@@ -61,8 +40,10 @@ body {
   .green-flat-button:hover {
     background: #25a45a; }
   .green-flat-button:active {
-    background: #1e8449;
-    box-shadow: 0 5px 0 0 #27ae60; }
+    background: #229955;
+    box-shadow: 0 2.5px 0 0 #1e8449; }
+  .green-flat-button:focus {
+    outline: 0; }
   .green-flat-button:disabled {
     color: darkgray;
     background: #c6dbcf;
@@ -83,8 +64,10 @@ body {
   .blue-flat-button:hover {
     background: #2779af; }
   .blue-flat-button:active {
-    background: #20638f;
-    box-shadow: 0 5px 0 0 #2980b9; }
+    background: #2472a4;
+    box-shadow: 0 2.5px 0 0 #20638f; }
+  .blue-flat-button:focus {
+    outline: 0; }
   .blue-flat-button:disabled {
     color: darkgray;
     background: #ced9e0;
@@ -105,8 +88,10 @@ body {
   .purple-flat-button:hover {
     background: #8640a4; }
   .purple-flat-button:active {
-    background: #703688;
-    box-shadow: 0 5px 0 0 #8e44ad; }
+    background: #7f3d9b;
+    box-shadow: 0 2.5px 0 0 #703688; }
+  .purple-flat-button:focus {
+    outline: 0; }
   .purple-flat-button:disabled {
     color: darkgray;
     background: #dfdde0;
@@ -127,8 +112,10 @@ body {
   .dark-blue-flat-button:hover {
     background: #273848; }
   .dark-blue-flat-button:active {
-    background: #1a242f;
-    box-shadow: 0 5px 0 0 #2c3e50; }
+    background: #233140;
+    box-shadow: 0 2.5px 0 0 #1a242f; }
+  .dark-blue-flat-button:focus {
+    outline: 0; }
   .dark-blue-flat-button:disabled {
     color: darkgray;
     background: #a4a4a4;
@@ -149,9 +136,6 @@ body {
 
 .padding-none {
   padding: 0; }
-
-.primary-color {
-  color: #c0392b; }
 
 .back-button {
   float: left;
@@ -181,7 +165,9 @@ header {
   margin: 0;
   background: #2980b9;
   padding: 20px 0 15px;
-  color: white; }
+  color: white;
+  box-shadow: #20638f 0 5px 0 0;
+  /*border-radius:0 0 5px 5px;*/ }
   #PrimaryHeader #logo {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
@@ -198,7 +184,7 @@ header {
   z-index: 1;
   background-color: #ecf0f1;
   position: fixed;
-  padding-top: 59px;
+  padding-top: 64px;
   top: 0;
   bottom: 0;
   height: 100%;
@@ -208,6 +194,10 @@ header {
   /*@media(max-width: 640px) {
       display: none;
   }*/ }
+  #Sidebar a {
+    display: block;
+    text-decoration: none;
+    color: inherit; }
   #Sidebar .selected, #Sidebar a:hover {
     color: white;
     background-color: #2c3e50; }
@@ -221,15 +211,12 @@ header {
     margin-bottom: 0; }
     #Sidebar ul li {
       border-bottom: solid #c4c4c4 1px; }
-  #Sidebar a {
-    padding: 5px 10px 5px 20px;
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-    height: 100%;
-    font-size: 1.1em;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+      #Sidebar ul li a {
+        padding: 5px 10px 5px 20px;
+        width: 100%;
+        height: 100%;
+        font-size: 1.1em;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
 
 #mobile-nav {
   width: 95%;
@@ -272,16 +259,16 @@ header {
         padding: 10px; } }
   #ticket h2 {
     font-size: 1.2rem; }
-  #ticket .closed {
-    background-color: #c0392b; }
   #ticket section {
     background-color: white;
     border: solid 25px #8e44ad;
     border-top: none;
     color: black;
     padding: 2em 10%; }
-  #ticket .ticket-info {
+  #ticket .info {
     color: #c0392b; }
+  #ticket .closed {
+    background-color: #c0392b; }
   #ticket #description {
     font-family: sans-serif;
     margin: 0 30px 30px;
@@ -305,12 +292,6 @@ header {
     padding: .5rem 5%;
     background-color: #eee; }
 
-#button-stack {
-  background: #ecf0f1;
-  padding: 20px 0;
-  width: 200px;
-  margin-left: 40px; }
-
 #ticket-table {
   background-color: #e74c3c;
   margin-bottom: 40px; }
@@ -321,11 +302,14 @@ header {
   #ticket-table .flex-row {
     margin-bottom: 0; }
   #ticket-table h1 {
-    margin: 30px auto 0;
-    padding-bottom: 40px;
-    text-align: center;
+    margin: 0;
+    line-height: 2.5rem;
+    padding: 40px 0 40px 30%;
     font-size: 2.5rem;
     color: white; }
+  #ticket-table .table-button {
+    float: right;
+    margin: 30px 10px; }
   #ticket-table .table-row {
     padding-top: 5px;
     border-bottom: solid #c4c4c4 1px;
@@ -358,11 +342,14 @@ header {
   #team-table .flex-row {
     margin-bottom: 0; }
   #team-table h1 {
-    margin: 30px auto 0;
-    padding-bottom: 40px;
-    text-align: center;
+    margin: 0;
+    line-height: 2.5rem;
+    padding: 40px 0 40px 30%;
     font-size: 2.5rem;
     color: white; }
+  #team-table .table-button {
+    float: right;
+    margin: 30px 10px; }
   #team-table .table-row {
     padding-top: 5px;
     border-bottom: solid #c4c4c4 1px;
@@ -383,6 +370,7 @@ header {
       margin: 0; }
 
 #ticket-charts-wrapper {
+  margin-top: 40px;
   background-color: #2ecc71;
   padding: 25px;
   margin-bottom: 40px; }
@@ -416,7 +404,7 @@ header {
     padding: 20px 0;
     margin: 0; }
 
-form {
+#ticket-creator {
   width: 90%;
   max-width: 600px;
   margin: 0 auto;
@@ -424,9 +412,9 @@ form {
   padding-bottom: 10px;
   background-color: white; }
   @media (max-width: 660px) {
-    form {
+    #ticket-creator {
       width: 90%; } }
-  form input, form textarea, form select {
+  #ticket-creator input, #ticket-creator textarea, #ticket-creator select {
     margin: 0 0 30px 70px;
     width: 60%;
     color: #c0392b;
@@ -436,20 +424,72 @@ form {
     border: none;
     padding: 5px; }
     @media (max-width: 660px) {
-      form input, form textarea, form select {
+      #ticket-creator input, #ticket-creator textarea, #ticket-creator select {
         width: 80%;
         margin: 0 0 20px 5px;
         font-size: .8em; } }
-  form label {
+  #ticket-creator label {
     text-align: left;
     margin-left: 70px;
     font-size: 1.3em; }
     @media (max-width: 660px) {
-      form label {
+      #ticket-creator label {
         font-size: 1.1em;
         margin-left: 5px; } }
-  form fieldset {
+  #ticket-creator fieldset {
     border: none;
     margin: 0; }
+
+#team-detail-wrapper {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #16a085;
+  padding: 20px 20px 0 20px; }
+  #team-detail-wrapper > h1 {
+    color: white;
+    text-align: center;
+    display: block;
+    padding: 15px;
+    font-size: 2.5em; }
+  #team-detail-wrapper h2 {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 0; }
+  #team-detail-wrapper .data-pane {
+    background-color: #1abc9c; }
+  #team-detail-wrapper ul {
+    background: #ecf0f1;
+    padding-left: 0;
+    min-height: 400px; }
+    #team-detail-wrapper ul li {
+      list-style: none;
+      padding: 5px 20px;
+      border-bottom: solid #c4c4c4 1px;
+      font-weight: bold;
+      font-family: sans-serif;
+      color: #2c3e50; }
+      #team-detail-wrapper ul li:hover {
+        background-color: #fcecef;
+        cursor: pointer; }
+
+#team-creator {
+  display: inline;
+  padding: 30px 20px;
+  background-color: #9b59b6;
+  margin-bottom: 500px; }
+  #team-creator label {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+    margin: 0; }
+  #team-creator input {
+    height: 100%;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    color: black; }
+  #team-creator .green-flat-button {
+    display: inline-block;
+    margin-left: 20px; }
 
 /*# sourceMappingURL=style.css.map */

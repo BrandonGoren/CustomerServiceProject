@@ -2,25 +2,25 @@
     <div id="ticket">
         <h1 ng-class="{open: vm.ticket.open, closed : !vm.ticket.open}">{{vm.ticket.name}} ({{vm.ticket.open ? "Open" : "Closed"}})</h1>
         <section>
-            <h2 class="inline-left">Website: <span class="ticket-info">{{vm.ticket.website.name}}</span></h2>
-            <h2 class="inline-right"> Issue Type: <span class="ticket-info">{{vm.ticket.issueType}}</span></h2>
+            <h2 class="inline-left">Website: <span class="info">{{vm.ticket.website.name}}</span></h2>
+            <h2 class="inline-right"> Issue Type: <span class="info">{{vm.ticket.issueType}}</span></h2>
             <hr class="clear-both" />
-            <h2>Opened: <span class="ticket-info">{{vm.ticket.dateRaised | date: 'short'}}</span></h2>
+            <h2>Opened: <span class="info">{{vm.ticket.dateRaised | date: 'short'}}</span></h2>
             <h2 ng-show="!vm.ticket.open">Closed: <span class="ticket-info">{{vm.ticket.dateClosed | date: 'short'}}</span></h2>
             <hr />
-            <h2>Assigned Team: <span class="ticket-info">{{vm.ticket.team.name}}</span></h2>
+            <h2>Assigned Team: <span class="info">{{vm.ticket.team.name}}</span></h2>
             <hr />
-            <h2>Affected Customers: <span class="ticket-info">{{vm.ticket.affectedCustomersIds.length}}</span></h2>
+            <h2>Affected Customers: <span class="info">{{vm.ticket.affectedCustomersIds.length}}</span></h2>
             <hr />
             <h2>Description:</h2>
-            <p id="description" class="ticket-info">{{vm.ticket.description}}</p>
+            <p id="description" class="info">{{vm.ticket.description}}</p>
             <hr />
             <h2>Notes:</h2>
             <ul id="notes">
-                <li class="ticket-info" ng-show="vm.ticket.notes.length == 0"> There are no notes here </li>
-                <li class="ticket-info" ng-repeat="note in vm.ticket.notes">{{note.content}} ({{note.date | date: 'short'}})</li>
+                <li class="info" ng-show="vm.ticket.notes.length == 0"> There are no notes here </li>
+                <li class="info" ng-repeat="note in vm.ticket.notes">{{note.content}} ({{note.date | date: 'short'}})</li>
             </ul>
-            <textarea class="ticket-info" id="add-note-box" ng-model="vm.newNote.content" ng-show="vm.addingNote"></textarea>
+            <textarea class="info" id="add-note-box" ng-model="vm.newNote.content" ng-show="vm.addingNote"></textarea>
             <div class="row">
                 <div class="col-4-md">
                     <button type="submit" ng-show="vm.showBaseButtons()" class="red-flat-button" ng-click="vm.close()">Close Ticket</button>

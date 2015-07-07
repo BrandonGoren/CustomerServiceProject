@@ -45,7 +45,7 @@
 
         function saveNote() {
             ticketService.addNote(vm.ticket, vm.newNote).then(function (response) {
-                vm.ticket.notes = response.notes;
+                activate();
             });
             vm.addingNote = false;
             vm.newNote = "";

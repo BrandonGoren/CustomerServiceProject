@@ -40,8 +40,6 @@ namespace WebApi.Controllers
             return this.Ok(IssueConverter.ToDto(this.issues.Where(i => i.Website.Id == websiteId)));
         }
 
-        ////[Route("?search")]
-
         [Route("{openOrClosed}")]
         public IHttpActionResult Get(string openOrClosed)
         {
@@ -68,7 +66,7 @@ namespace WebApi.Controllers
         public IHttpActionResult Post(Dto.Issue issueData)
         {
             Issue issue = IssueConverter.ToNewDmn(issueData);
-            this.issues.Add(issue);
+            this.company.InsertIssue(issue);
             return this.Created(this.Request.RequestUri.AbsolutePath + "/" + issue.Id, IssueConverter.ToDto(issue));
         }
 
@@ -116,6 +114,7 @@ namespace WebApi.Controllers
             {
                 if (issue.Open)
                 {
+                    this.company.CloseIssue(issue);
                     issue.CloseIssue();
                     return this.Ok(IssueConverter.ToDto(issue));
                 }
@@ -138,7 +137,7 @@ namespace WebApi.Controllers
             {
                 if (issue.Open)
                 {
-                    issue.Notes.Add(new Notes(note.Content));
+                    this.company.AddNote(issue, note);
                     return this.Ok(IssueConverter.ToDto(issue));
                 }
                 else
@@ -159,6 +158,7 @@ namespace WebApi.Controllers
             else
             {
                 IssueConverter.PutInDomain(issueData, existing);
+                this.company.UpdateIssue(existing);
                 return this.Ok(IssueConverter.ToDto(existing));
             }
         }
@@ -173,6 +173,7 @@ namespace WebApi.Controllers
             }
             else
             {
+                this.company.DeleteIssue(existing);
                 this.issues.Remove(existing);
                 return this.StatusCode(HttpStatusCode.NoContent);
             }

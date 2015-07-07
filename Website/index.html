@@ -22,16 +22,13 @@
         <nav></nav>
     </header>
     <div id="Sidebar" ng-controller="NavController as vm">
+        <a href="/" ng-class="{selected : vm.isActive('/')}"><h3>Home</h3></a>
         <h3>Tickets</h3>
         <ul>
             <li ng-class="{selected : vm.isActive('/see-tickets')}"><a href="/see-tickets">See All Tickets</a></li>
             <li ng-class="{selected : vm.isActive('/open-ticket')}"><a href="/open-ticket">Create Ticket</a></li>
         </ul>
-        <h3>Teams</h3>
-        <ul>
-            <li><a href="/see-teams">See All Teams</a></li>
-            <li><a href="something.html">Create Team</a></li>
-        </ul>
+        <a href="/teams" ng-class="{selected : vm.isActive('/teams')}"><h3>Teams</h3></a>
     </div>
     <div id="Wrapper">
         <ng-view></ng-view>
@@ -41,7 +38,6 @@
     <script src="/js/libraries/angular-route.min.js"></script>
     <script src="/js/libraries/angular-chart.min.js"></script>
     <script src="/js/nav-bar-dropdown.js"></script>
-    <!--<script src="/js/app.js"></script>-->
     <script src="/js/earlybirds.module.js"></script>
     <script src="/js/earlybirds.routes.js"></script>
     <script src="/js/services/ticket.service.js"></script>
@@ -50,6 +46,7 @@
     <script src="/js/controllers/ticket-detail.controller.js"></script>
     <script src="/js/controllers/ticket-creator.controller.js"></script>
     <script src="/js/controllers/ticket-edit.controller.js"></script>
+    <script src="/js/controllers/team-detail.controller.js"></script>
     <script src="/js/controllers/nav.controller.js"></script>
     <script src="/js/directives/ticket-chart.directive.js"></script>
     <script src="/js/directives/ticket-list.directive.js"></script>
