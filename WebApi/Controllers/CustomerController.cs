@@ -11,18 +11,18 @@ namespace WebApi.Controllers
     [RoutePrefix("customers")]
     public class CustomerController : ApiController
     {
-        private ISet<Customer> customers = DatabaseTest.SampleCompany.CustomerAccounts;
+        private EarlyBirdsContext context = new EarlyBirdsContext();
 
         [Route]
         public IHttpActionResult Get()
         {
-            return this.Ok(CustomerConverter.ToDto(this.customers));
+            return this.Ok(CustomerConverter.ToDto(this.context.Customers.ToList()));
         }
 
         [Route("{id:int}")]
         public IHttpActionResult Get(int id)
         {
-            Customer customer = this.customers.FirstOrDefault(i => i.Id == id);
+            Customer customer = this.context.Customers.FirstOrDefault(i => i.Id == id);
             if (customer == null)
             {
                 return this.NotFound();
@@ -36,7 +36,7 @@ namespace WebApi.Controllers
         [Route("{name}")]
         public IHttpActionResult Get(string name)
         {
-            Customer customer = this.customers.FirstOrDefault(i => i.Name.ToLower() == name.ToLower());
+            Customer customer = this.context.Customers.FirstOrDefault(i => i.Name.ToLower() == name.ToLower());
             if (customer == null)
             {
                 return this.NotFound();
@@ -50,7 +50,7 @@ namespace WebApi.Controllers
         [Route("{id:int}/issues")]
         public IHttpActionResult GetIssues(int id)
         {
-            Customer customer = this.customers.FirstOrDefault(i => i.Id == id);
+            Customer customer = this.context.Customers.FirstOrDefault(i => i.Id == id);
             if (customer == null)
             {
                 return this.NotFound();
@@ -64,7 +64,7 @@ namespace WebApi.Controllers
         [Route("{id:int}")]
         public IHttpActionResult Put(int id, Dto.Customer customer)
         {
-            Customer existing = this.customers.FirstOrDefault(i => i.Id == id);
+            Customer existing = this.context.Customers.FirstOrDefault(i => i.Id == id);
             if (existing == null)
             {
                 return this.NotFound();
@@ -72,6 +72,7 @@ namespace WebApi.Controllers
             else
             {
                 CustomerConverter.PutInDomain(customer, existing);
+                this.context.SaveChanges();
                 return this.Ok(CustomerConverter.ToDto(existing));
             }
         }
@@ -80,21 +81,23 @@ namespace WebApi.Controllers
         public IHttpActionResult Post(Dto.Customer customerData)
         {
             Customer customer = CustomerConverter.ToNewDmn(customerData);
-            this.customers.Add(customer);
+            this.context.Customers.Add(customer);
+            this.context.SaveChanges();
             return this.Created(this.Request.RequestUri.AbsolutePath + "/" + customer.Id, CustomerConverter.ToDto(customer));
         }
 
         [Route("{id:int}")]
         public IHttpActionResult Delete(int id)
         {
-            Customer existing = this.customers.FirstOrDefault(i => i.Id == id);
+            Customer existing = this.context.Customers.FirstOrDefault(i => i.Id == id);
             if (existing == null)
             {
                 return this.NotFound();
             }
             else
             {
-                this.customers.Remove(existing);
+                this.context.Customers.Remove(existing);
+                this.context.SaveChanges();
                 return this.StatusCode(HttpStatusCode.NoContent);
             }
         }

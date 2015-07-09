@@ -31,13 +31,11 @@ namespace Domain
         }
 
         public Issue()
-        {
-            this.DateRaised = DateTime.Now;
-        }
+        { }
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime DateRaised { get; private set; }
+        public DateTime DateRaised { get; set; }
         public DateTime? DateClosed { get; private set; }
         public bool Open { get; set; }
         public string Description { get; set; }

@@ -155,10 +155,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Company.cs" />
     <Compile Include="Agent.cs" />
     <Compile Include="Customer.cs" />
-    <Compile Include="DatabaseTest.cs" />
     <Compile Include="EarlyBirdsContext.cs" />
     <Compile Include="EarlyBirdsInitializer.cs" />
     <Compile Include="GlobalSuppressions.cs" />

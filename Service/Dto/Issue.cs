@@ -22,5 +22,6 @@ namespace Service.Dto
         public int WebsiteId { get; set; }
         public IEnumerable<Notes> Notes { get; set; }
         public int Priority { get; set; }
+        public ICollection<WebBrowser> AffectedBrowsers { get; internal set; }
     }
 }

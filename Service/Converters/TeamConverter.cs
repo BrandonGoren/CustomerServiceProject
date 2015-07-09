@@ -29,10 +29,11 @@ namespace Service.Converters
 
         public static Dmn.Team ToNewDmn(Dto.Team dataObject)
         {
+            Dmn.EarlyBirdsContext context = new Dmn.EarlyBirdsContext();
             Dmn.Team output = new Dmn.Team(dataObject.Name);
             if (dataObject.TeamMemberIds != null)
             {
-                output.AddTeamMembers(Dmn.DatabaseTest.SampleCompany.Agents.Where(i => dataObject.TeamMemberIds.Contains(i.Id)));
+                output.AddTeamMembers(context.Agents.Where(i => dataObject.TeamMemberIds.Contains(i.Id)));
             }
             if (dataObject.Expertise != null)
             {
@@ -46,6 +47,7 @@ namespace Service.Converters
 
         public static void PutInDomain(Dto.Team teamData, Dmn.Team team)
         {
+            Dmn.EarlyBirdsContext context = new Dmn.EarlyBirdsContext();
             team.Name = teamData.Name;
             team.TeamMembers.Clear();
             team.Expertise.Clear();
@@ -53,7 +55,7 @@ namespace Service.Converters
             {
                 team.Expertise.Add(field);
             }
-            team.AddTeamMembers(Dmn.DatabaseTest.SampleCompany.Agents.Where(i => teamData.TeamMemberIds.Contains(i.Id)));
+            team.AddTeamMembers(context.Agents.Where(i => teamData.TeamMemberIds.Contains(i.Id)));
         }
     }
 }

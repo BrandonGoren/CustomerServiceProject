@@ -11,18 +11,18 @@ namespace WebApi.Controllers
     [RoutePrefix("agents")]
     public class AgentController : ApiController
     {
-        private ISet<Agent> agents = DatabaseTest.SampleCompany.Agents;
+        private EarlyBirdsContext context = new EarlyBirdsContext();
 
         [Route]
         public IHttpActionResult Get()
         {
-            return this.Ok(AgentConverter.ToDto(this.agents));
+            return this.Ok(AgentConverter.ToDto(this.context.Agents.ToList()));
         }
 
         [Route("{id:int}")]
         public IHttpActionResult Get(int id)
         {
-            Agent agent = this.agents.FirstOrDefault(i => i.Id == id);
+            Agent agent = this.context.Agents.FirstOrDefault(i => i.Id == id);
             if (agent == null)
             {
                 return this.NotFound();
@@ -36,7 +36,7 @@ namespace WebApi.Controllers
         [Route("{name}")]
         public IHttpActionResult Get(string name)
         {
-            Agent agent = this.agents.FirstOrDefault(i => i.Name.ToLower() == name.ToLower());
+            Agent agent = this.context.Agents.FirstOrDefault(i => i.Name.ToLower() == name.ToLower());
             if (agent == null)
             {
                 return this.NotFound();
@@ -50,7 +50,7 @@ namespace WebApi.Controllers
         [Route("{id:int}/teams")]
         public IHttpActionResult GetTeams(int id)
         {
-            Agent agent = this.agents.FirstOrDefault(i => i.Id == id);
+            Agent agent = this.context.Agents.FirstOrDefault(i => i.Id == id);
             if (agent == null)
             {
                 return this.NotFound();
@@ -64,7 +64,7 @@ namespace WebApi.Controllers
         [Route("{id:int}/issues")]
         public IHttpActionResult GetIssues(int id)
         {
-            Agent agent = this.agents.FirstOrDefault(i => i.Id == id);
+            Agent agent = this.context.Agents.FirstOrDefault(i => i.Id == id);
             if (agent == null)
             {
                 return this.NotFound();
@@ -78,7 +78,7 @@ namespace WebApi.Controllers
         [Route("{id:int}")]
         public IHttpActionResult Put(int id, Dto.Agent agentData)
         {
-            Agent existing = this.agents.FirstOrDefault(i => i.Id == id);
+            Agent existing = this.context.Agents.FirstOrDefault(i => i.Id == id);
             if (existing == null)
             {
                 return this.NotFound();
@@ -86,6 +86,7 @@ namespace WebApi.Controllers
             else
             {
                 AgentConverter.PutInDomain(agentData, existing);
+                this.context.SaveChanges();
                 return this.Ok(AgentConverter.ToDto(existing));
             }
         }
@@ -94,21 +95,23 @@ namespace WebApi.Controllers
         public IHttpActionResult Post(Dto.Agent agentData)
         {
             Agent agent = AgentConverter.ToNewDmn(agentData);
-            this.agents.Add(agent);
+            this.context.Agents.Add(agent);
+            this.context.SaveChanges();
             return this.Created(this.Request.RequestUri.AbsolutePath + "/" + agent.Id, AgentConverter.ToDto(agent));
         }
         
         [Route("{id:int}")]
         public IHttpActionResult Delete(int id)
         {
-            Agent existing = this.agents.FirstOrDefault(i => i.Id == id);
+            Agent existing = this.context.Agents.FirstOrDefault(i => i.Id == id);
             if (existing == null)
             {
                 return this.NotFound();
             }
             else
             {
-                this.agents.Remove(existing);
+                this.context.Agents.Remove(existing);
+                this.context.SaveChanges();
                 return this.StatusCode(HttpStatusCode.NoContent);
             }
         }

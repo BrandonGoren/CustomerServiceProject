@@ -23,9 +23,9 @@ namespace Service.Converters
                 DateClosed = domain.DateClosed,
                 AssignedTeamId = domain.TeamId,
                 AffectedCustomersIds = domain.AffectedCustomers.Select(i => i.Id),
-                ////AffectedBrowsers = domain.AffectedBrowsers,
+                AffectedBrowsers = domain.AffectedBrowsers,
                 IssueType = domain.IssueType,
-                WebsiteId = domain.Website.Id,
+                WebsiteId = domain.WebsiteId,
                 Notes = domain.Notes
             };
         }

@@ -11,7 +11,6 @@ namespace WebApi.Controllers
     [RoutePrefix("websites")]
     public class WebsiteController : ApiController
     {
-        ////private ISet<Website> websites = DatabaseTest.SampleCompany.OwnedWebsites;
         private EarlyBirdsContext context = new EarlyBirdsContext();
 
         [Route]
@@ -44,7 +43,7 @@ namespace WebApi.Controllers
             }
             else
             {
-                return this.Ok(IssueConverter.ToDto(DatabaseTest.SampleCompany.Issues.Where(i => i.WebsiteId == website.Id)).ToList());
+                return this.Ok(IssueConverter.ToDto(this.context.Issues.Where(i => i.WebsiteId == website.Id)).ToList());
             }
         }
 

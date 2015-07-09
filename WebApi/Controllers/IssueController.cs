@@ -65,6 +65,7 @@ namespace WebApi.Controllers
         public IHttpActionResult Post(Dto.Issue issueData)
         {
             Issue issue = IssueConverter.ToNewDmn(issueData);
+            issue.DateRaised = System.DateTime.Now;
             this.context.Issues.Add(issue);
             this.context.SaveChanges();
             return this.Created(this.Request.RequestUri.AbsolutePath + "/" + issue.Id, IssueConverter.ToDto(issue));

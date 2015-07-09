@@ -15,11 +15,11 @@ namespace Domain
             this.Date = DateTime.Now;
         }
 
-        public Notes()
-        { }
+        public Notes() { }
 
         public int Id { get; private set; }
         public string Content { get; set; }
+        public int IssueId { get; set; }
         public DateTime Date { get; set; }
         public Agent Author { get; set; }
     }
