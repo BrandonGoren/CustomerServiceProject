@@ -7,10 +7,10 @@
                     <option ng-repeat="website in vm.websites" value="{{website.id}}" ng-selected="website.id === vm.ticket.websiteId">{{website.name}}</option>
                 </select>
             </h2> 
-            <h2 class="inline-right"> Issue Type: <span class="ticket-info">{{vm.ticket.issueType}}</span></h2>
+            <h2 class="inline-right"> Priority: <span class="info">{{vm.ticket.priority}}</span></h2>
             <hr class="clear-both" />
-            <h2>Opened: <span class="ticket-info">{{vm.ticket.dateRaised | date: 'short'}}</span></h2>
-            <h2 ng-show="!vm.ticket.open">Closed: <span class="ticket-info">{{vm.ticket.dateClosed | date: 'short'}}</span></h2>
+            <h2>Opened: <span class="info">{{vm.ticket.dateRaised | date: 'short'}}</span></h2>
+            <h2 ng-show="!vm.ticket.open">Closed: <span class="info">{{vm.ticket.dateClosed | date: 'short'}}</span></h2>
             <hr />
             <h2>
                 Assigned Team: <select ng-model="vm.ticket.assignedTeamId">
@@ -18,15 +18,15 @@
                 </select>
             </h2> 
             <hr />
-            <h2>Affected Customers: <span class="ticket-info">{{vm.ticket.affectedCustomersIds.length}}</span></h2>
+            <h2>Affected Customers: <span class="info">{{vm.ticket.affectedCustomersIds.length}}</span></h2>
             <hr />
             <h2>Description:</h2>
-            <textarea class="ticket-info" id="description" ng-model="vm.ticket.description">{{vm.ticket.description}}</textarea>
+            <textarea class="info" id="description" ng-model="vm.ticket.description">{{vm.ticket.description}}</textarea>
             <hr />
             <h2>Notes:</h2>
             <ul id="notes">
-                <li class="ticket-info" ng-show="vm.ticket.notes.length == 0"> There are no notes here </li>
-                <li class="ticket-info" ng-repeat="note in vm.ticket.notes">{{note.content}} ({{note.date | date: 'short'}})</li>
+                <li class="info" ng-show="vm.ticket.notes.length == 0"> There are no notes here </li>
+                <li class="info" ng-repeat="note in vm.ticket.notes">{{note.content}} ({{note.date | date: 'short'}})</li>
             </ul>
             <div class="row">
                 <div class="col-4-sm">

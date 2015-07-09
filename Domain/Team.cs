@@ -14,22 +14,18 @@ namespace Domain
         {
             this.Id = ++IdCount;
             this.Name = name;
-            this.TeamMembers = new HashSet<Agent>();
+            this.TeamMembers = new List<Agent>();
             this.Expertise = new HashSet<TypeOfIssue>();
+            this.AssignedIssues = new List<Issue>();
         }
 
-        public int Id { get; }
+        public Team() { }
+
+        public int Id { get; set; }
         public string Name { get; set; }
-        public ISet<Agent> TeamMembers { get; private set; }
-        public ISet<TypeOfIssue> Expertise { get; private set; }
-
-        public IEnumerable<Issue> AssignedIssues
-        {
-            get
-            {
-                return DatabaseTest.SampleCompany.Issues.Where(i => i.AssignedTeamId == this.Id);
-            }
-        }
+        public virtual ICollection<Agent> TeamMembers { get; protected set; }
+        public virtual ICollection<TypeOfIssue> Expertise { get; protected set; }
+        public virtual ICollection<Issue> AssignedIssues { get; protected set; }
 
         public void AddTeamMembers(IEnumerable<Agent> agents)
         {

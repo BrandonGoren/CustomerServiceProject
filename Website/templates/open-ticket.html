@@ -15,6 +15,14 @@
                 <option value="3">Typo</option>
                 <option value="4">User Interface</option>
             </select>
+            <label>Priority</label>
+            <select id="priority" name="priority" ng-model="vm.ticket.priority">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="4">5</option>
+            </select>
             <label>Issue Description:</label>
             <textarea rows="8" id="issue" ng-model="vm.ticket.description"></textarea>
             <label>Assigned To:</label>

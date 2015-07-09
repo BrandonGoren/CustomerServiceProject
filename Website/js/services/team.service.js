@@ -29,7 +29,7 @@
         function getTeam(teamId) {
             return $http.get('http://localhost:2001/teams/' + teamId).
             error(function (error) {
-                alert(error);
+                console.log(error);
                 return error;
             }).then(function (response) {
                 return response.data;

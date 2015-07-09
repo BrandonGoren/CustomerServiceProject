@@ -13,8 +13,8 @@
             <div class="col-3-xs col-2-md " ng-click="vm.reverse=!vm.reverse; vm.order('name', vm.reverse)">
                 <h3>Name</h3>
             </div>
-            <div class="col-1-xs col-2-md type">
-                <h3>Type</h3>
+            <div class="col-1-xs col-2-md type"  ng-click="vm.reverse=!vm.reverse; vm.order('priority', vm.reverse)">
+                <h3>Priority</h3>
             </div>
             <div class="col-3-xs col-2-md">
                 <h3>
@@ -33,14 +33,14 @@
             </div>
             <div class="date col-1-xs col-2-md " ng-click="vm.reverse=!vm.reverse; vm.order('dateRaised', vm.reverse)">
                 <h3>
-                    Opened
+                    Created
                 </h3>
             </div>
         </div>
         <div ng-repeat="ticket in vm.ticketsToShow" ng-click="vm.goToTicket(ticket.id)">
             <div class="flex-row table-row">
                 <div class="col-3-xs col-2-md ">{{ticket.name}}</div>
-                <div class="type col-1-xs col-2-md">{{ticket.issueType}}</div>
+                <div class="type col-1-xs col-2-md">{{ticket.priority}}</div>
                 <div class="col-3-xs col-2-md ">{{ticket.website.name}}</div>
                 <div class=" team col-1-xs col-2-md">{{ticket.team.name}}</div>
                 <div class="col-3-xs col-2-md ">{{ticket.open ? "Open" : "Closed"}}</div>

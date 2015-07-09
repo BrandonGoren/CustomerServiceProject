@@ -17,12 +17,13 @@ namespace Service.Converters
                 Id = domain.Id,
                 Name = domain.Name,
                 Open = domain.Open,
+                Priority = domain.Priority,
                 Description = domain.Description,
                 DateRaised = domain.DateRaised,
                 DateClosed = domain.DateClosed,
-                AssignedTeamId = domain.AssignedTeamId,
+                AssignedTeamId = domain.TeamId,
                 AffectedCustomersIds = domain.AffectedCustomers.Select(i => i.Id),
-                AffectedBrowsers = domain.AffectedBrowsers,
+                ////AffectedBrowsers = domain.AffectedBrowsers,
                 IssueType = domain.IssueType,
                 WebsiteId = domain.Website.Id,
                 Notes = domain.Notes
@@ -36,11 +37,12 @@ namespace Service.Converters
 
         public static Dmn.Issue ToNewDmn(Dto.Issue dataObject)
         {
-            Dmn.Issue output = new Dmn.Issue(dataObject.Name, 
-                Dmn.DatabaseTest.SampleCompany.OwnedWebsites.FirstOrDefault(i => i.Id == dataObject.WebsiteId), 
+            Dmn.EarlyBirdsContext context = new Dmn.EarlyBirdsContext();
+            Dmn.Issue output = new Dmn.Issue(dataObject.Name,
+               dataObject.WebsiteId, dataObject.Priority,
                 dataObject.IssueType, dataObject.Description)
             {
-                AssignedTeamId = dataObject.AssignedTeamId,
+                TeamId = dataObject.AssignedTeamId,
             };
             //output.AddAffectedCustomers(Dmn.DatabaseTest.SampleCompany.CustomerAccounts.Where(i => dataObject.AffectedCustomersIds.Contains(i.Id)));
             //output.AddAffectedBrowsers(dataObject.AffectedBrowsers);
@@ -49,17 +51,19 @@ namespace Service.Converters
 
         public static void PutInDomain(Dto.Issue issueData, Dmn.Issue issue)
         {
-            issue.AffectedBrowsers.Clear();
+            Dmn.EarlyBirdsContext context = new Dmn.EarlyBirdsContext();
+
+            //issue.AffectedBrowsers.Clear();
             issue.AffectedCustomers.Clear();
             issue.Notes.Clear();
             issue.Name = issueData.Name;
-            issue.Website = Dmn.DatabaseTest.SampleCompany.OwnedWebsites.FirstOrDefault(i => i.Id == issueData.WebsiteId);
+            issue.WebsiteId = issueData.WebsiteId;
+            issue.Priority = issueData.Priority;
             issue.IssueType = issueData.IssueType;
             issue.Description = issueData.Description;
             issue.Open = issueData.Open;
-            issue.AssignedTeamId = issueData.AssignedTeamId;
-            issue.AddAffectedCustomers(Dmn.DatabaseTest.SampleCompany.CustomerAccounts.Where(i => issueData.AffectedCustomersIds.Contains(i.Id)));
-            issue.AddAffectedBrowsers(issueData.AffectedBrowsers);
+            issue.TeamId = issueData.AssignedTeamId;
+            issue.AddAffectedCustomers(context.Customers.Where(i => issueData.AffectedCustomersIds.Contains(i.Id)));
             issue.AddNotes(issueData.Notes);
         }
     }

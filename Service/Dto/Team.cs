@@ -12,7 +12,7 @@ namespace Service.Dto
         public int? Id { get; set; }
         public string Name { get; set; }
         public IEnumerable<int> TeamMemberIds { get; set; }
-        public ISet<Domain.TypeOfIssue> Expertise { get; set; }
+        public IEnumerable<Domain.TypeOfIssue> Expertise { get; set; }
         public IEnumerable<int> AssignedIssueIds { get; set; }
     }
 }

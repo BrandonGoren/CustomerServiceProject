@@ -11,12 +11,13 @@ namespace Domain
     {
         private static int IdCount = 0;
 
-        public Issue(string name, Website website, TypeOfIssue type, string description, Customer customer = null)
+        public Issue(string name, int websiteId, int priority, TypeOfIssue type, string description, Customer customer = null)
         {
             this.Id = ++IdCount;
             this.Name = name;
             this.DateRaised = DateTime.Now;
-            this.Website = website;
+            this.WebsiteId = websiteId;
+            this.Priority = priority;
             this.IssueType = type;
             this.Description = description;
             this.AffectedBrowsers = new HashSet<WebBrowser>();
@@ -29,34 +30,25 @@ namespace Domain
             this.Open = true;
         }
 
-        public Issue(int id, string name, DateTime dateRaised, DateTime? dateClosed, bool open, Website website, TypeOfIssue type, string description, int assignedTeamId, HashSet<Customer> customers)
+        public Issue()
         {
-            this.Id = id;
-            this.Name = name;
-            this.Open = open;
-            this.DateRaised = dateRaised;
-            this.DateClosed = dateClosed;
-            this.Website = website;
-            this.IssueType = type;
-            this.Description = description;
-            this.AssignedTeamId = assignedTeamId;
-            this.AffectedBrowsers = new HashSet<WebBrowser>();
-            this.AffectedCustomers = new HashSet<Customer>(customers);
-            this.Notes = new List<Notes>();
+            this.DateRaised = DateTime.Now;
         }
 
-        public int Id { get; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateRaised { get; private set; }
         public DateTime? DateClosed { get; private set; }
         public bool Open { get; set; }
         public string Description { get; set; }
-        public ISet<Customer> AffectedCustomers { get; private set; }
-        public ISet<WebBrowser> AffectedBrowsers { get; private set; }
-        public IList<Notes> Notes { get; private set; }
-        public int? AssignedTeamId { get; set; }
+        public int Priority { get; set; }
+        public virtual ICollection<Customer> AffectedCustomers { get; private set; }
+        public virtual ICollection<WebBrowser> AffectedBrowsers { get; private set; }
+        public virtual ICollection<Notes> Notes { get; private set; }
+        public int? TeamId { get; set; }
         public TypeOfIssue IssueType { get; set; }
-        public Website Website { get; set; }
+        public virtual Website Website { get; set; }
+        public int WebsiteId { get; set; }
 
         public void Put(Issue input)
         {
@@ -66,9 +58,10 @@ namespace Domain
             this.DateClosed = input.DateClosed;
             this.Open = input.Open;
             this.Description = input.Description;
+            this.Priority = input.Priority;
             this.AffectedCustomers = input.AffectedCustomers;
             this.Notes = input.Notes;
-            this.AssignedTeamId = input.AssignedTeamId;
+            this.TeamId = input.TeamId;
             this.IssueType = input.IssueType;
             this.Website = input.Website;
         }

@@ -71,7 +71,7 @@
                 success(function (response) {
                     console.log(response);
                 }).error(function (error) {
-                    alert(error)
+                    console.log(error)
                 }).then(function (response) {
                     return response.data;
                 });

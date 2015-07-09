@@ -16,10 +16,11 @@ namespace Service.Dto
         public bool Open { get; set; }
         public string Description { get; set; }
         public IEnumerable<int> AffectedCustomersIds { get; set; }
-        public IEnumerable<Domain.WebBrowser> AffectedBrowsers { get; set; }
+        ////public IEnumerable<Domain.WebBrowser> AffectedBrowsers { get; set; }
         public int? AssignedTeamId { get; set; }
         public Domain.TypeOfIssue IssueType { get; set; }
         public int WebsiteId { get; set; }
-        public IList<Notes> Notes { get; set; }
+        public IEnumerable<Notes> Notes { get; set; }
+        public int Priority { get; set; }
     }
 }

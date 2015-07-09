@@ -18,17 +18,13 @@ namespace Domain
             this.ContactInfo = new Dictionary<MethodOfCommunication, string>();
         }
 
-        public int Id { get; }
+        public Customer() { }
+
+        public int Id { get; set; }
         public string Name { get; set; }
         public Dictionary<MethodOfCommunication, string> ContactInfo { get; set; }
         public MethodOfCommunication PreferredCommunicationMethod { get; set; }
-        public IEnumerable<Issue> Issues
-        {
-            get
-            {
-                return DatabaseTest.SampleCompany.Issues.Where(i => i.AffectedCustomers.Contains(this));
-            }
-        }
+        public virtual IEnumerable<Issue> Issues { get; private set; }
 
         public void Put(Customer input)
         {

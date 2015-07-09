@@ -8,16 +8,19 @@ namespace Domain
 {
     public class Notes
     {
-        public Notes(int id, string content, DateTime date)
+        public Notes(int id, string content)
         {
             this.Id = id;
             this.Content = content;
-            this.Date = date;
+            this.Date = DateTime.Now;
         }
+
+        public Notes()
+        { }
 
         public int Id { get; private set; }
         public string Content { get; set; }
-        public DateTime Date { get; }
+        public DateTime Date { get; set; }
         public Agent Author { get; set; }
     }
 }

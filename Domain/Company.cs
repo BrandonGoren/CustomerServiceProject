@@ -42,9 +42,9 @@ namespace Domain
 
         public Company SampleCompany()
         {
-            Website estateSales = new Website("EstateSales.net", new Uri("http://estatesales.net"));
+            Website estateSales = new Website("EstateSales.net", "http://estatesales.net");
             this.OwnedWebsites.Add(estateSales);
-            Website anotherWebsite = new Website("anotherWebsite.net", new Uri("http://estatesales.net"));
+            Website anotherWebsite = new Website("anotherWebsite.net", "http://google.com");
             this.OwnedWebsites.Add(anotherWebsite);
             Team ATeam = new Team("A Team");
             Team BTeam = new Team("B Team");
@@ -90,19 +90,20 @@ namespace Domain
                 int assignedTeamId = (int)row["AssignedTeamId"];
                 int issueTypeId = (int)row["IssueTypeId"];
                 int websiteId = (int)row["WebsiteId"];
+                int priority = (int)row["Priority"];
                 HashSet<Customer> customers = new HashSet<Customer>();
-                Issue issue = new Issue(id, name, dateRaised, dateClosed, open, this.OwnedWebsites.FirstOrDefault(i => i.Id == websiteId), TypeOfIssue.UI, description, 1, customers);
-                issue.AssignedTeamId = assignedTeamId;
-                DbCommand noteCmd = db.GetSqlStringCommand(string.Format("Select * FROM Note WHERE IssueId={0}", issue.Id));
-                DataSet notes = db.ExecuteDataSet(noteCmd);
-                foreach (DataRow noteRow in notes.Tables[0].Rows)
-                {
-                    int noteId = (int)noteRow["NoteId"];
-                    string content = (string)noteRow["Content"];
-                    DateTime noteDate = (DateTime)noteRow["Date"];
-                    issue.Notes.Add(new Notes(noteId, content, noteDate));
-                }
-                output.Add(issue);
+                ////Issue issue = new Issue(id, name, dateRaised, dateClosed, open, this.OwnedWebsites.FirstOrDefault(i => i.Id == websiteId), priority, TypeOfIssue.UI, description, 1, customers);
+                ////issue.TeamId = assignedTeamId;
+                ////DbCommand noteCmd = db.GetSqlStringCommand(string.Format("Select * FROM Note WHERE IssueId={0}", issue.Id));
+                ////DataSet notes = db.ExecuteDataSet(noteCmd);
+                ////foreach (DataRow noteRow in notes.Tables[0].Rows)
+                ////{
+                ////    int noteId = (int)noteRow["NoteId"];
+                ////    string content = (string)noteRow["Content"];
+                ////    DateTime noteDate = (DateTime)noteRow["Date"];
+                ////    issue.Notes.Add(new Notes(noteId, content, noteDate));
+                ////}
+                ////output.Add(issue);
             }
             return output;
         }
@@ -110,7 +111,7 @@ namespace Domain
         public void InsertIssue(Issue issue)
         {
             SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
-            string sqlString = string.Format("INSERT INTO Issue(Name, Description, AssignedTeamId, IssueTypeId, WebsiteId) values('{0}', '{1}', {2}, {3}, {4});", issue.Name, issue.Description, issue.AssignedTeamId, '3', issue.Website.Id);
+            string sqlString = string.Format("INSERT INTO Issue(Name, Description, AssignedTeamId, IssueTypeId, WebsiteId, Priority) values('{0}', '{1}', {2}, {3}, {4}, {5});", issue.Name, issue.Description, issue.TeamId, '3', issue.Website.Id, issue.Priority);
             DbCommand cmd = db.GetSqlStringCommand(sqlString);
             db.ExecuteNonQuery(cmd);
         }
@@ -126,15 +127,27 @@ namespace Domain
         public void CloseIssue(Issue issue)
         {
             SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
-            string sqlString = string.Format("Update Issue SET [Open]=0, DateClosed=GETUTCDATE() WHERE IssueId = {0};", issue.Id);
+            string sqlString = string.Format("UPDATE Issue SET [Open]=0, DateClosed=GETUTCDATE() WHERE IssueId = {0};", issue.Id);
             DbCommand cmd = db.GetSqlStringCommand(sqlString);
+            db.ExecuteNonQuery(cmd);
+        }
+
+        public void UpdateIssueCommand(Issue issue)
+        {
+            SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
+            DbCommand cmd = db.GetStoredProcCommand("dbo.update_issue");
+            db.AddInParameter(cmd, "@IssueId", DbType.Int32, issue.Id);
+            db.AddInParameter(cmd, "@Name", DbType.String, issue.Name);
+            db.AddInParameter(cmd, "@Description", DbType.String, issue.Description);
+            db.AddInParameter(cmd, "@WebsiteId", DbType.Int32, issue.Website.Id);
+            db.AddInParameter(cmd, "@AssignedTeamId", DbType.Int32, issue.TeamId);
             db.ExecuteNonQuery(cmd);
         }
 
         public void UpdateIssue(Issue issue)
         {
             SqlDatabase db = new SqlDatabase(ConfigurationManager.ConnectionStrings["EarlyBirds"].ConnectionString);
-            string sqlString = string.Format("UPDATE ISSUE SET Name='{1}', Description='{2}', WebsiteId={3}, AssignedTeamId={4} WHERE IssueId = {0};", issue.Id, issue.Name, issue.Description, issue.Website.Id, issue.AssignedTeamId);
+            string sqlString = string.Format("UPDATE ISSUE SET Name='{1}', Description='{2}', WebsiteId={3}, AssignedTeamId={4} WHERE IssueId = {0};", issue.Id, issue.Name, issue.Description, issue.Website.Id, issue.TeamId);
             DbCommand cmd = db.GetSqlStringCommand(sqlString);
             db.ExecuteNonQuery(cmd);
         }

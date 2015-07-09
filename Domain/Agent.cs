@@ -16,25 +16,17 @@ namespace Domain
             this.Id = ++IdCount;
             this.Name = name;
             this.Email = email;
+            this.Teams = new List<Team>();
+            this.Issues = new List<Issue>();
         }
 
-        public int Id { get; }
+        public Agent() { }
+
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public IEnumerable<Team> Teams
-        {
-            get
-            {
-                return DatabaseTest.SampleCompany.Teams.Where(i => i.TeamMembers.Contains(this));
-            }
-        }
-        public IEnumerable<Issue> Issues
-        {
-            get
-            {
-                return DatabaseTest.SampleCompany.Issues.Where(i => this.Teams.Any(j => j.Id == i.AssignedTeamId));
-            }
-        }
+        public virtual ICollection<Team> Teams { get; protected set;  }
+        public virtual ICollection<Issue> Issues { get; protected set; }
 
         public void Put(Agent input)
         {

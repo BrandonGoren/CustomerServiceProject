@@ -3,10 +3,10 @@
         <h1 ng-class="{open: vm.ticket.open, closed : !vm.ticket.open}">{{vm.ticket.name}} ({{vm.ticket.open ? "Open" : "Closed"}})</h1>
         <section>
             <h2 class="inline-left">Website: <span class="info">{{vm.ticket.website.name}}</span></h2>
-            <h2 class="inline-right"> Issue Type: <span class="info">{{vm.ticket.issueType}}</span></h2>
+            <h2 class="inline-right"> Priority: <span class="info">{{vm.ticket.priority}}</span></h2>
             <hr class="clear-both" />
             <h2>Opened: <span class="info">{{vm.ticket.dateRaised | date: 'short'}}</span></h2>
-            <h2 ng-show="!vm.ticket.open">Closed: <span class="ticket-info">{{vm.ticket.dateClosed | date: 'short'}}</span></h2>
+            <h2 ng-show="!vm.ticket.open">Closed: <span class="info">{{vm.ticket.dateClosed | date: 'short'}}</span></h2>
             <hr />
             <h2>Assigned Team: <span class="info">{{vm.ticket.team.name}}</span></h2>
             <hr />
