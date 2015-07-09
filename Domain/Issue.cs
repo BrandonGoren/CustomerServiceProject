@@ -30,8 +30,7 @@ namespace Domain
             this.Open = true;
         }
 
-        public Issue()
-        { }
+        public Issue() { }
 
         public int Id { get; set; }
         public string Name { get; set; }

@@ -9,8 +9,11 @@
             replace: 'true',
             templateUrl: '/js/directives/templates/team-list.html',
             controller: TeamController,
+            bindToController: true,
             controllerAs: 'vm',
-            scope: {}
+            scope: {
+                showCreator: '='
+            }
         }
     }
 

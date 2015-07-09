@@ -1,0 +1,22 @@
+﻿<div>
+    <div id="website-table">
+        <div class="flex-row">
+            <div class="col-5-lg padding-none">
+                <h1>{{vm.title}}</h1>
+            </div>
+        </div>
+        <div class="flex-row" id="table-title-row">
+            <div class="col-6-xs"><h3>Name</h3></div>
+            <div class="col-6-xs"><h3>Tickets Assigned</h3></div>
+        </div>
+        <div ng-repeat="website in vm.websites" ng-click="vm.goToWebsite(website.id)">
+            <div ng-show="vm.teams.length === 0" class=" flex-row table-row">
+                <div class="col-12-xs">There are no websites available</div>
+            </div>
+            <div class="flex-row table-row">
+                <div class="col-6-xs">{{website.name}}</div>
+                <div class="col-6-xs">{{website.issues.length}}</div>
+            </div>
+        </div>
+    </div>
+</div>

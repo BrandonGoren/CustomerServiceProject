@@ -318,7 +318,7 @@ header {
     #ticket-table .table-row:hover {
       background-color: #c5eef2;
       cursor: pointer; }
-  #ticket-table .col-2-md, #ticket-table .col-3-xs, #ticket-table .col-4-xs {
+  #ticket-table .col-2-md, #ticket-table .col-3-xs, #ticket-table .col-4-xs, #ticket-table .col-12-xs, #ticket-table .col-6-xs {
     padding: 8px; }
   #ticket-table #table-title-row {
     color: white;
@@ -358,7 +358,7 @@ header {
     #team-table .table-row:hover {
       background-color: #d9edd0;
       cursor: pointer; }
-  #team-table .col-2-md, #team-table .col-3-xs, #team-table .col-4-xs {
+  #team-table .col-2-md, #team-table .col-3-xs, #team-table .col-4-xs, #team-table .col-12-xs, #team-table .col-6-xs {
     padding: 8px; }
   #team-table #table-title-row {
     color: white;
@@ -367,6 +367,49 @@ header {
     font-size: 1.2em;
     margin-bottom: 0; }
     #team-table #table-title-row h3 {
+      margin: 0; }
+
+#website-table {
+  background-color: #3498db;
+  margin-bottom: 40px;
+  /*h1 {
+      background-image: url(/Media/earth.png);
+      background-size: 75px;
+      background-position: left center;
+      background-repeat: no-repeat;
+  }*/ }
+  @media (max-width: 800px) {
+    #website-table {
+      font-size: .8rem;
+      font-weight: normal; } }
+  #website-table .flex-row {
+    margin-bottom: 0; }
+  #website-table h1 {
+    margin: 0;
+    line-height: 2.5rem;
+    padding: 40px 0 40px 30%;
+    font-size: 2.5rem;
+    color: white; }
+  #website-table .table-button {
+    float: right;
+    margin: 30px 10px; }
+  #website-table .table-row {
+    padding-top: 5px;
+    border-bottom: solid #c4c4c4 1px;
+    background-color: #ecf0f1;
+    font-weight: bold; }
+    #website-table .table-row:hover {
+      background-color: #f0d2be;
+      cursor: pointer; }
+  #website-table .col-2-md, #website-table .col-3-xs, #website-table .col-4-xs, #website-table .col-12-xs, #website-table .col-6-xs {
+    padding: 8px; }
+  #website-table #table-title-row {
+    color: white;
+    background-color: #2980b9;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0; }
+    #website-table #table-title-row h3 {
       margin: 0; }
 
 #ticket-charts-wrapper {

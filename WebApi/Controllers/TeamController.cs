@@ -149,6 +149,7 @@ namespace WebApi.Controllers
             }
             else
             {
+                this.context.Issues.Where(i => i.TeamId == existing.Id).ToList().ForEach(i => i.TeamId = null);
                 this.context.Teams.Remove(existing);
                 this.context.SaveChanges();
                 return this.StatusCode(HttpStatusCode.NoContent);

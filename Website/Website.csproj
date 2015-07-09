@@ -65,6 +65,8 @@
     <None Include="css\_team-creator.scss" />
     <Content Include="index.html" />
     <Content Include="js\controllers\team-detail.controller.js" />
+    <Content Include="js\directives\templates\website-list.html" />
+    <Content Include="js\directives\website-list.directive.js" />
     <Content Include="js\earlybirds.routes.js" />
     <Content Include="js\earlybirds.module.js" />
     <Content Include="js\directives\team-list.directive.js" />
@@ -84,6 +86,7 @@
     <Content Include="js\services\website.service.js" />
     <Content Include="templates\edit-ticket.html" />
     <Content Include="templates\see-teams.html" />
+    <Content Include="templates\see-websites.html" />
     <Content Include="templates\team-details.html" />
     <Content Include="templates\ticket-details.html" />
     <Content Include="templates\home.html" />

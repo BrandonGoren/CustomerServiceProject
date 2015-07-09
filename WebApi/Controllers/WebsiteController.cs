@@ -43,7 +43,7 @@ namespace WebApi.Controllers
             }
             else
             {
-                return this.Ok(IssueConverter.ToDto(this.context.Issues.Where(i => i.WebsiteId == website.Id)).ToList());
+                return this.Ok(IssueConverter.ToDto(this.context.Issues.ToList().Where(i => i.WebsiteId == website.Id)));
             }
         }
 

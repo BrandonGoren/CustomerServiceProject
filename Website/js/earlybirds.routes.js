@@ -48,6 +48,10 @@
                 templateUrl: 'templates/team-details.html',
                 controller: 'TeamDetailController',
                 controllerAs: 'vm'
+            })
+        .when('/websites',
+            {
+                templateUrl: 'templates/see-websites.html',
             });
 
         $locationProvider.html5Mode(true)

@@ -1,6 +1,8 @@
 ﻿#ticket-table {
     @include table-creator($red-primary, $red-secondary);
 
+
+
     @media(max-width: 1150px) {
         .date, .type, .team {
             visibility: hidden;
@@ -10,4 +12,15 @@
 
 #team-table {
     @include table-creator($purple-primary, $purple-secondary);
+}
+
+#website-table {
+    @include table-creator($blue-primary, $blue-secondary);
+
+    /*h1 {
+        background-image: url(/Media/earth.png);
+        background-size: 75px;
+        background-position: left center;
+        background-repeat: no-repeat;
+    }*/
 }

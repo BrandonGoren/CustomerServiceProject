@@ -33,12 +33,6 @@ namespace WebApi.Controllers
             }
         }
 
-        [Route("issues/website/{id:int}")]
-        public IHttpActionResult GetWebsiteIssues(int websiteId)
-        {
-            return this.Ok(IssueConverter.ToDto(this.context.Issues.Where(i => i.WebsiteId == websiteId)).ToList());
-        }
-
         [Route("{openOrClosed}")]
         public IHttpActionResult Get(string openOrClosed)
         {

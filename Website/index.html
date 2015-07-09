@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html ng-app="ticketsApp">
 <head>
-    <title>Early Bird</title>
+    <title>Early Birds</title>
     <link href="/css/normalize.css" rel="stylesheet" />
     <link href="/css/grid.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet" />
@@ -15,7 +15,7 @@
         <div class="menu-color">
             <div id="PrimaryHeader">
                 <a href="/" id="logo">
-                    <h1>Early Bird</h1>
+                    <h1>Early Birds</h1>
                 </a>
             </div>
         </div>
@@ -29,6 +29,7 @@
             <li ng-class="{selected : vm.isActive('/open-ticket')}"><a href="/open-ticket">Create Ticket</a></li>
         </ul>
         <a href="/teams" ng-class="{selected : vm.isActive('/teams')}"><h3>Teams</h3></a>
+        <a href="/websites" ng-class="{selected : vm.isActive('/websites')}"><h3>Websites</h3></a>
     </div>
     <div id="Wrapper">
         <ng-view></ng-view>
@@ -51,5 +52,6 @@
     <script src="/js/directives/ticket-chart.directive.js"></script>
     <script src="/js/directives/ticket-list.directive.js"></script>
     <script src="/js/directives/team-list.directive.js"></script>
+    <script src="/js/directives/website-list.directive.js"></script>
 </body>
 </html>
