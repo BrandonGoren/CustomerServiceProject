@@ -8,7 +8,7 @@ $blue-secondary: #3498db;
 $green-primary: #27ae60;
 $green-secondary: #2ecc71;
 $aqua-primary: #16a085;
-$aqua-secondary:#1abc9c;
+$aqua-secondary: #1abc9c;
 $dark-blue-primary: #2c3e50;
 $dark-blue-secondary: #34495e;
 $purple-primary: #8e44ad;
@@ -37,9 +37,11 @@ $sidebar: #ecf0f1;
         background: darken($color, 5);
         box-shadow: 0 2.5px 0 0 darken($color, 10);
     }
+
     &:focus {
         outline: 0;
     }
+
     &:disabled {
         color: darkgray;
         background: lighten(desaturate($color, 40), 40);
@@ -63,9 +65,14 @@ $sidebar: #ecf0f1;
     h1 {
         margin: 0;
         line-height: 2.5rem;
-        padding: 40px 0 40px 30%;
+        padding: 40px 0 40px 80px;
         font-size: 2.5rem;
         color: white;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
     }
 
     .table-button {
@@ -151,6 +158,14 @@ body {
 
 .padding-none {
     padding: 0;
+}
+
+.padding-left-none {
+    padding-left: 0;
+}
+
+.padding-right-none {
+    padding-right: 0;
 }
 
 .back-button {

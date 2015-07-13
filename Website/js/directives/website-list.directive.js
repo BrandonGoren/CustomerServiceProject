@@ -19,7 +19,9 @@
         var vm = this;
         vm.title = "Websites";
         vm.websites = [];
+        vm.newWebsite = {};
         vm.goToWebsite = goToWebsite;
+        vm.addWebsite = addWebsite;
         activate();
 
         function activate() {
@@ -35,6 +37,11 @@
 
         function goToWebsite(websiteId) {
             //$location.path('websites/' + websiteId);
+        }
+
+        function addWebsite() {
+            websiteService.addWebsite(vm.newWebsite);
+            activate();
         }
     }
 })();

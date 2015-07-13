@@ -1,6 +1,17 @@
-﻿#ticket-table {
+﻿@mixin icon($icon) {
+    $url: "/Media/#{$icon}.png";
+    background-image: url($url);
+    background-size: 75px;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+#ticket-table {
     @include table-creator($red-primary, $red-secondary);
 
+    h1 {
+        @include icon(ticket);
+    }
 
 
     @media(max-width: 1150px) {
@@ -12,15 +23,16 @@
 
 #team-table {
     @include table-creator($purple-primary, $purple-secondary);
+
+    h1 {
+        @include icon(team);
+    }
 }
 
 #website-table {
     @include table-creator($blue-primary, $blue-secondary);
 
-    /*h1 {
-        background-image: url(/Media/earth.png);
-        background-size: 75px;
-        background-position: left center;
-        background-repeat: no-repeat;
-    }*/
+    h1 {
+        @include icon(earth);
+    }
 }

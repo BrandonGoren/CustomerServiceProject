@@ -25,8 +25,8 @@ namespace Domain
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public virtual ICollection<Team> Teams { get; protected set;  }
-        public virtual ICollection<Issue> Issues { get; protected set; }
+        public virtual ICollection<Team> Teams { get; private set;  }
+        public virtual ICollection<Issue> Issues { get; private set; }
 
         public void Put(Agent input)
         {

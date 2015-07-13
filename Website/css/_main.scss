@@ -30,8 +30,16 @@ header {
         text-align: center;
     }
 
+    &:focus {
+        outline: 0;
+    }
+
     h1 {
         margin: 0;
+        
+    &:focus {
+        outline: 0;
+    }
     }
 }
 
@@ -55,12 +63,17 @@ header {
         display: block;
         text-decoration: none;
         color: inherit;
+
+        &:focus {
+            outline: 0;
+        }
     }
 
     .selected, a:hover {
         color: white;
         background-color: $sidebar-color;
     }
+
 
     h3 {
         padding: 10px 5px;

@@ -23,9 +23,9 @@ namespace Domain
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Agent> TeamMembers { get; protected set; }
-        public virtual ICollection<TypeOfIssue> Expertise { get; protected set; }
-        public virtual ICollection<Issue> AssignedIssues { get; protected set; }
+        public virtual ICollection<Agent> TeamMembers { get; private set; }
+        public virtual ICollection<TypeOfIssue> Expertise { get; private set; }
+        public virtual ICollection<Issue> AssignedIssues { get; private set; }
 
         public void AddTeamMembers(IEnumerable<Agent> agents)
         {

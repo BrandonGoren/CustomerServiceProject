@@ -12,6 +12,7 @@
             getAll: getAll,
             getWebsite: getWebsite,
             getWebsiteIssues: getWebsiteIssues,
+            addWebsite: addWebsite,
             deleteWebsite: deleteWebsite
         };
 
@@ -41,6 +42,15 @@
                     return error;
                 }).then(function (response) {
                     return response.data;
+                });
+        }
+
+        function addWebsite(website) {
+            return $http.post('http://localhost:2001/websites', website).
+                success(function (response) {
+                    console.log(response);
+                }).error(function (error) {
+                    console.log(error);
                 });
         }
 
