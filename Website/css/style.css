@@ -137,6 +137,12 @@ body {
 .padding-none {
   padding: 0; }
 
+.padding-left-none {
+  padding-left: 0; }
+
+.padding-right-none {
+  padding-right: 0; }
+
 .back-button {
   float: left;
   color: white;
@@ -174,8 +180,12 @@ header {
     text-decoration: none;
     text-anchor: end;
     text-align: center; }
+  #PrimaryHeader:focus {
+    outline: 0; }
   #PrimaryHeader h1 {
     margin: 0; }
+    #PrimaryHeader h1:focus {
+      outline: 0; }
 
 /*******************
     Sidebar
@@ -198,6 +208,8 @@ header {
     display: block;
     text-decoration: none;
     color: inherit; }
+    #Sidebar a:focus {
+      outline: 0; }
   #Sidebar .selected, #Sidebar a:hover {
     color: white;
     background-color: #2c3e50; }
@@ -304,9 +316,12 @@ header {
   #ticket-table h1 {
     margin: 0;
     line-height: 2.5rem;
-    padding: 40px 0 40px 30%;
+    padding: 40px 0 40px 80px;
     font-size: 2.5rem;
     color: white; }
+  #ticket-table a {
+    text-decoration: none;
+    color: inherit; }
   #ticket-table .table-button {
     float: right;
     margin: 30px 10px; }
@@ -328,6 +343,11 @@ header {
     margin-bottom: 0; }
     #ticket-table #table-title-row h3 {
       margin: 0; }
+  #ticket-table h1 {
+    background-image: url("/Media/ticket.png");
+    background-size: 75px;
+    background-position: left center;
+    background-repeat: no-repeat; }
   @media (max-width: 1150px) {
     #ticket-table .date, #ticket-table .type, #ticket-table .team {
       visibility: hidden; } }
@@ -344,9 +364,12 @@ header {
   #team-table h1 {
     margin: 0;
     line-height: 2.5rem;
-    padding: 40px 0 40px 30%;
+    padding: 40px 0 40px 80px;
     font-size: 2.5rem;
     color: white; }
+  #team-table a {
+    text-decoration: none;
+    color: inherit; }
   #team-table .table-button {
     float: right;
     margin: 30px 10px; }
@@ -368,16 +391,15 @@ header {
     margin-bottom: 0; }
     #team-table #table-title-row h3 {
       margin: 0; }
+  #team-table h1 {
+    background-image: url("/Media/team.png");
+    background-size: 75px;
+    background-position: left center;
+    background-repeat: no-repeat; }
 
 #website-table {
   background-color: #3498db;
-  margin-bottom: 40px;
-  /*h1 {
-      background-image: url(/Media/earth.png);
-      background-size: 75px;
-      background-position: left center;
-      background-repeat: no-repeat;
-  }*/ }
+  margin-bottom: 40px; }
   @media (max-width: 800px) {
     #website-table {
       font-size: .8rem;
@@ -387,9 +409,12 @@ header {
   #website-table h1 {
     margin: 0;
     line-height: 2.5rem;
-    padding: 40px 0 40px 30%;
+    padding: 40px 0 40px 80px;
     font-size: 2.5rem;
     color: white; }
+  #website-table a {
+    text-decoration: none;
+    color: inherit; }
   #website-table .table-button {
     float: right;
     margin: 30px 10px; }
@@ -411,6 +436,11 @@ header {
     margin-bottom: 0; }
     #website-table #table-title-row h3 {
       margin: 0; }
+  #website-table h1 {
+    background-image: url("/Media/earth.png");
+    background-size: 75px;
+    background-position: left center;
+    background-repeat: no-repeat; }
 
 #ticket-charts-wrapper {
   margin-top: 40px;
