@@ -19,7 +19,7 @@
         function getAll() {
             return $http.get('http://localhost:2001/teams').
                 error(function (error) {
-                    alert(error);
+                    console.log(error);
                     return error;
                 }).then(function (response) {
                     return response.data;
@@ -39,7 +39,7 @@
         function getTeamTickets(teamId) {
             return $http.get('http://localhost:2001/teams/' + teamId + '/issues').
             error(function (error) {
-                alert(error);
+                console.log(error);
                 return error;
             }).then(function (response) {
                 return response.data;
@@ -49,7 +49,7 @@
         function getTeamAgents(teamId) {
             return $http.get('http://localhost:2001/teams/' + teamId + '/agents').
             error(function (error) {
-                alert(error);
+                console.log(error);
                 return error;
             }).then(function (response) {
                 return response.data;
@@ -70,7 +70,7 @@
                 success(function (response) {
                     console.log(response);
                 }).error(function (error) {
-                    alert(error)
+                    console.log(error)
                 }).then(function (response) {
                     return response.data;
                 });

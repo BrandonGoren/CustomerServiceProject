@@ -42,14 +42,14 @@
                 success(function (response) {
                     console.log(response);
                 }).error(function (error) {
-                    alert(error)
+                    console.log(error)
                 });
         }
 
         function addNote (ticket, note) {
             return $http.put('http://localhost:2001/issues/' + ticket.id + '/add-note', note).
             error(function (error) {
-                alert(error)
+                console.log(error)
             }).then(function (response) {
                 return response.data;
             });
@@ -81,7 +81,7 @@
             return $http.put('http://localhost:2001/issues/' + ticketId + '/close-issue').success(function (response) {
                 console.log('ticket closed');
             }).error(function (error) {
-                alert(error)
+                console.log(error)
             }).then(function (response) {
                 return response.data;
             });

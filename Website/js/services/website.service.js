@@ -38,7 +38,7 @@
         function getWebsiteIssues(websiteId) {
             return $http.get('http://localhost:2001/websites/' + websiteId + '/issues').
                 error(function (error) {
-                    alert(error);
+                    console.log(error);
                     return error;
                 }).then(function (response) {
                     return response.data;
