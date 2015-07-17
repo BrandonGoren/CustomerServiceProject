@@ -189,3 +189,6 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 Website/style.css
+TwitterApi/Class1.cs
+TwitterApi/packages.config
+TwitterApi/TwitterApi.csproj
