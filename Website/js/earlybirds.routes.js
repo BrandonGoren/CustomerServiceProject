@@ -52,7 +52,13 @@
         .when('/websites',
             {
                 templateUrl: 'templates/see-websites.html',
-            });
+            })
+        .when('/chat',
+        {
+            templateUrl: 'templates/chat.html',
+            controller: 'ChatController',
+            controllerAs: 'vm'
+        });
 
         $locationProvider.html5Mode(true)
     }

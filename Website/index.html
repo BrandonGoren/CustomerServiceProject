@@ -29,6 +29,7 @@
         </ul>
         <a href="/teams" ng-class="{selected : vm.isActive('/teams')}"><h3>Teams</h3></a>
         <a href="/websites" ng-class="{selected : vm.isActive('/websites')}"><h3>Websites</h3></a>
+        <a href="/chat" ng-class="{selected : vm.isActive('/chat')}"><h3>Chat</h3></a>
     </div>
     <div id="Wrapper">
         <ng-view></ng-view>
@@ -37,6 +38,7 @@
     <script src="js/libraries/Chart.min.js"></script>
     <script src="/js/libraries/angular-route.min.js"></script>
     <script src="/js/libraries/angular-chart.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="/js/nav-bar-dropdown.js"></script>
     <script src="/js/earlybirds.module.js"></script>
     <script src="/js/earlybirds.routes.js"></script>
@@ -48,6 +50,7 @@
     <script src="/js/controllers/ticket-edit.controller.js"></script>
     <script src="/js/controllers/team-detail.controller.js"></script>
     <script src="/js/controllers/nav.controller.js"></script>
+    <script src="/js/controllers/chat.controller.js"></script>
     <script src="/js/directives/ticket-chart.directive.js"></script>
     <script src="/js/directives/ticket-list.directive.js"></script>
     <script src="/js/directives/team-list.directive.js"></script>

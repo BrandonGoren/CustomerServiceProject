@@ -1,0 +1,65 @@
+﻿<div id="team-detail-wrapper">
+    <h1>Chat {{vm.chatStarted ? '(' + vm.username + ')' : ''}}</h1>
+    <form ng-hide="vm.chatStarted">
+            <label>Log In:</label>
+            <input type="text" placeholder="Name" ng-model="vm.username" />
+        <input type="text" placeholder="Team" ng-model="vm.teamName" />
+            <button class="green-flat-button table-button" ng-click="vm.activateChat()">Submit</button>
+    </form>
+    <div class="flex-row" ng-show="vm.chatStarted">
+        <div class="col-5-md">
+            <div class="data-pane">
+                <h2>Group Messages</h2>
+                <ul>
+                    <li ng-repeat="message in vm.groupMessages track by $index">
+                        {{message.author}}: {{message.message}}
+                    </li>
+                </ul>
+                <form>
+                    <input type="text" placeholder="Name" ng-model="vm.outgoingGroupMessage" />
+                    <button class="green-flat-button float-right" ng-click="vm.sendGroupMessage()">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-5-md">
+            <div class="data-pane">
+                <h2>Team Messages ({{vm.teamName}})</h2>
+                <ul>
+                    <li ng-repeat="message in vm.teamMessages track by $index">
+                        {{message.author}}: {{message.message}}
+                    </li>
+                </ul>
+                <form>
+                    <input type="text" placeholder="Name" ng-model="vm.outgoingTeamMessage" />
+                    <button class="green-flat-button table-button" ng-click="vm.sendTeamMessage()">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-2-md">
+            <div class="data-pane">
+                <h2>Online</h2>
+                <ul>
+                    <li ng-repeat="user in vm.onlineUsers track by $index" ng-click="vm.createPrivateChat(user.id, user.username)">
+                        {{user.username}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-5-md" ng-repeat="chat in vm.privateChats">
+                <div class="data-pane">
+                    <h2>{{chat.name}}</h2>
+                    <ul>
+                        <li ng-repeat="message in chat.messages track by $index">
+                            {{message.author}}: {{message.message}}
+                        </li>
+                    </ul>
+                    <form>
+                        <input type="text" placeholder="Name" ng-model="chat.outgoingMessage" />
+                        <button class="green-flat-button table-button" ng-click="vm.sendPrivateMessage(chat.id)">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

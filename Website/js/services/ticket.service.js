@@ -19,7 +19,7 @@
         };
 
         function getAll () {
-            return $http.get('http://localhost:2001/issues').
+            return $http.get('http://localhost:2004/issues').
                 error(function (error) {
                     alert(error);
                     return error;
@@ -29,7 +29,7 @@
         }
 
         function getTicket (ticketId) {
-            return $http.get('http://localhost:2001/issues/' + ticketId).
+            return $http.get('http://localhost:2004/issues/' + ticketId).
             error(function (error) {
                 return error
             }).then(function (response) {
@@ -38,7 +38,7 @@
         }
 
         function saveTicket (ticket) {
-            return $http.post('http://localhost:2001/issues', ticket).
+            return $http.post('http://localhost:2004/issues', ticket).
                 success(function (response) {
                     console.log(response);
                 }).error(function (error) {
@@ -47,7 +47,7 @@
         }
 
         function addNote (ticket, note) {
-            return $http.put('http://localhost:2001/issues/' + ticket.id + '/add-note', note).
+            return $http.put('http://localhost:2004/issues/' + ticket.id + '/add-note', note).
             error(function (error) {
                 console.log(error)
             }).then(function (response) {
@@ -56,7 +56,7 @@
         }
 
         function editTicket (ticket) {
-            return $http.put('http://localhost:2001/issues/' + ticket.id, ticket).
+            return $http.put('http://localhost:2004/issues/' + ticket.id, ticket).
                 success(function (response) {
                     console.log(response);
                 }).error(function (error) {
@@ -67,7 +67,7 @@
         }
 
         function deleteTicket (ticket) {
-            return $http.delete('http://localhost:2001/issues/' + ticket.id, ticket).
+            return $http.delete('http://localhost:2004/issues/' + ticket.id, ticket).
                 success(function (response) {
                     console.log(response);
                 }).error(function (error) {
@@ -78,7 +78,7 @@
         }
 
         function closeTicket (ticketId) {
-            return $http.put('http://localhost:2001/issues/' + ticketId + '/close-issue').success(function (response) {
+            return $http.put('http://localhost:2004/issues/' + ticketId + '/close-issue').success(function (response) {
                 console.log('ticket closed');
             }).error(function (error) {
                 console.log(error)

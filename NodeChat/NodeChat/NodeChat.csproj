@@ -7,21 +7,19 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0901D094-28FA-42A2-A736-CE5E05F23CAA}</ProjectGuid>
+    <ProjectGuid>{30F9B62F-481E-4FD8-9F5E-AD1248271D15}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Website</RootNamespace>
-    <AssemblyName>Website</AssemblyName>
+    <RootNamespace>NodeChat</RootNamespace>
+    <AssemblyName>NodeChat</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +29,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -61,67 +58,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="css\_team-detail.scss" />
-    <None Include="css\_team-creator.scss" />
-    <Content Include="index.html" />
-    <Content Include="js\controllers\chat.controller.js" />
-    <Content Include="js\controllers\team-detail.controller.js" />
-    <Content Include="js\directives\templates\website-list.html" />
-    <Content Include="js\directives\website-list.directive.js" />
-    <Content Include="js\earlybirds.routes.js" />
-    <Content Include="js\earlybirds.module.js" />
-    <Content Include="js\directives\team-list.directive.js" />
-    <Content Include="js\directives\templates\team-list.html" />
-    <Content Include="js\directives\ticket-chart.directive.js" />
-    <Content Include="js\controllers\nav.controller.js" />
-    <Content Include="js\controllers\ticket-edit.controller.js" />
-    <Content Include="js\directives\templates\ticket-charts.html" />
-    <Content Include="js\directives\ticket-list.directive.js" />
-    <Content Include="js\libraries\angular-chart.min.js" />
-    <Content Include="js\libraries\angular-route.min.js" />
-    <Content Include="js\libraries\Chart.min.js" />
-    <Content Include="js\services\team.service.js" />
-    <Content Include="js\controllers\ticket-creator.controller.js" />
-    <Content Include="js\controllers\ticket-detail.controller.js" />
-    <Content Include="js\services\ticket.service.js" />
-    <Content Include="js\services\website.service.js" />
-    <Content Include="templates\chat.html" />
-    <Content Include="templates\edit-ticket.html" />
-    <Content Include="templates\see-teams.html" />
-    <Content Include="templates\see-websites.html" />
-    <Content Include="templates\team-details.html" />
-    <Content Include="templates\ticket-details.html" />
-    <Content Include="templates\home.html" />
-    <Content Include="templates\open-ticket.html" />
-    <Content Include="templates\see-tickets.html" />
-    <Content Include="js\directives\templates\ticket-list.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="css\grid.css" />
-    <Content Include="js\libraries\angular.js" />
-    <Content Include="js\nav-bar-dropdown.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Web.config" />
-    <Content Include="css\style.scss" />
-    <Content Include="css\_main.scss" />
-    <Content Include="css\_common.scss" />
-    <Content Include="css\_ticket-detail.scss" />
-    <Content Include="css\_ticket-team-list.scss" />
-    <Content Include="css\_ticket-chart.scss" />
-    <Content Include="css\_ticket-creator.scss" />
+    <Content Include="index.js" />
+    <Content Include="package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -136,9 +86,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57156</DevelopmentServerPort>
+          <DevelopmentServerPort>62729</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2000</IISUrl>
+          <IISUrl>http://localhost:62729/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -148,13 +98,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

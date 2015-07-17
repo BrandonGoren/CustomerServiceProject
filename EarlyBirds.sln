@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "SharedKernel\SharedKernel.csproj", "{E1DF219B-8DB4-4FDE-9750-E84536A00508}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeChat", "NodeChat\NodeChat\NodeChat.csproj", "{30F9B62F-481E-4FD8-9F5E-AD1248271D15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{E1DF219B-8DB4-4FDE-9750-E84536A00508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1DF219B-8DB4-4FDE-9750-E84536A00508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1DF219B-8DB4-4FDE-9750-E84536A00508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F9B62F-481E-4FD8-9F5E-AD1248271D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F9B62F-481E-4FD8-9F5E-AD1248271D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F9B62F-481E-4FD8-9F5E-AD1248271D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F9B62F-481E-4FD8-9F5E-AD1248271D15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

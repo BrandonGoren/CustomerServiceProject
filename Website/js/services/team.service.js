@@ -17,7 +17,7 @@
         }
 
         function getAll() {
-            return $http.get('http://localhost:2001/teams').
+            return $http.get('http://localhost:2004/teams').
                 error(function (error) {
                     console.log(error);
                     return error;
@@ -27,7 +27,7 @@
         }
 
         function getTeam(teamId) {
-            return $http.get('http://localhost:2001/teams/' + teamId).
+            return $http.get('http://localhost:2004/teams/' + teamId).
             error(function (error) {
                 console.log(error);
                 return error;
@@ -37,7 +37,7 @@
         }
 
         function getTeamTickets(teamId) {
-            return $http.get('http://localhost:2001/teams/' + teamId + '/issues').
+            return $http.get('http://localhost:2004/teams/' + teamId + '/issues').
             error(function (error) {
                 console.log(error);
                 return error;
@@ -47,7 +47,7 @@
         }
 
         function getTeamAgents(teamId) {
-            return $http.get('http://localhost:2001/teams/' + teamId + '/agents').
+            return $http.get('http://localhost:2004/teams/' + teamId + '/agents').
             error(function (error) {
                 console.log(error);
                 return error;
@@ -57,7 +57,7 @@
         }
 
         function createTeam(team) {
-            return $http.post('http://localhost:2001/teams', team).
+            return $http.post('http://localhost:2004/teams', team).
             success(function (response) {
                 console.log(response);
             }).error(function (error) {
@@ -66,7 +66,7 @@
         }
 
         function deleteTeam(team) {
-            return $http.delete('http://localhost:2001/teams/' + team.id, team).
+            return $http.delete('http://localhost:2004/teams/' + team.id, team).
                 success(function (response) {
                     console.log(response);
                 }).error(function (error) {
