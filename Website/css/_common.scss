@@ -139,6 +139,13 @@ body {
     @include button($dark-blue-primary);
 }
 
+.inline {
+    display: inline;
+}
+
+.inline-block {
+    display: inline-block;
+}
 
 .inline-left {
     text-align: left;

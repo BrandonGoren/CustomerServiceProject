@@ -4,7 +4,7 @@
             <label>Log In:</label>
             <input type="text" placeholder="Name" ng-model="vm.username" />
         <input type="text" placeholder="Team" ng-model="vm.teamName" />
-            <button class="green-flat-button table-button" ng-click="vm.activateChat()">Submit</button>
+            <button class="green-flat-button inline-block" ng-click="vm.activateChat()">Submit</button>
     </form>
     <div class="flex-row" ng-show="vm.chatStarted">
         <div class="col-5-md">
@@ -16,8 +16,8 @@
                     </li>
                 </ul>
                 <form>
-                    <input type="text" placeholder="Name" ng-model="vm.outgoingGroupMessage" />
-                    <button class="green-flat-button float-right" ng-click="vm.sendGroupMessage()">Submit</button>
+                    <textarea class="chat-input" ng-model="vm.outgoingGroupMessage"></textarea>
+                    <button class="green-flat-button inline-block" ng-click="vm.sendGroupMessage()">Submit</button>
                 </form>
             </div>
         </div>
@@ -30,8 +30,8 @@
                     </li>
                 </ul>
                 <form>
-                    <input type="text" placeholder="Name" ng-model="vm.outgoingTeamMessage" />
-                    <button class="green-flat-button table-button" ng-click="vm.sendTeamMessage()">Submit</button>
+                    <textarea class="chat-input" ng-model="vm.outgoingTeamMessage"></textarea>
+                    <button class="green-flat-button inline-block" ng-click="vm.sendTeamMessage()">Submit</button>
                 </form>
             </div>
         </div>
@@ -46,7 +46,7 @@
             </div>
         </div>
         </div>
-        <div class="row">
+        <div class="flex-row">
             <div class="col-5-md" ng-repeat="chat in vm.privateChats">
                 <div class="data-pane">
                     <h2>{{chat.name}}</h2>
@@ -56,8 +56,8 @@
                         </li>
                     </ul>
                     <form>
-                        <input type="text" placeholder="Name" ng-model="chat.outgoingMessage" />
-                        <button class="green-flat-button table-button" ng-click="vm.sendPrivateMessage(chat.id)">Submit</button>
+                        <textarea class="chat-input" ng-model="chat.outgoingMessage"></textarea>
+                        <button class="green-flat-button inline-block" ng-click="vm.sendPrivateMessage(chat.id)">Submit</button>
                     </form>
                 </div>
             </div>

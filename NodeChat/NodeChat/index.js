@@ -34,7 +34,7 @@ io.on('connection', function (socket) {
             io.sockets.connected[targetUser.socketId].emit('private message', { id: socket.userId, author: socket.username, message: data.message })
             io.sockets.connected[socket.id].emit('private message', { id: targetUser.id, author: socket.username, message: data.message })
         } else {
-            io.sockets.connected[socket.id].emit('private message', { id: data.id, author: 'offline', message: 'user is offline' })
+            io.sockets.connected[socket.id].emit('private message', { id: data.id, author: 'system', message: 'user is offline' })
         }
     });
 

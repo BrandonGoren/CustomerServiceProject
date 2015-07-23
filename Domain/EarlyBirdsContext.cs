@@ -10,7 +10,7 @@ namespace Domain
 {
     public class EarlyBirdsContext : DbContext
     {
-        public EarlyBirdsContext() : base("EarlyBirds") { }
+        public EarlyBirdsContext() : base("EarlyBirds2") { }
 
         public DbSet<Issue> Issues { get; set; }
         public DbSet<Website> Websites { get; set; }

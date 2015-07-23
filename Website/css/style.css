@@ -121,6 +121,12 @@ body {
     background: #a4a4a4;
     box-shadow: 0 5px 0 0 #8b8b8b; }
 
+.inline {
+  display: inline; }
+
+.inline-block {
+  display: inline-block; }
+
 .inline-left {
   text-align: left;
   display: inline-block;
@@ -563,5 +569,32 @@ header {
   #team-creator .green-flat-button {
     display: inline-block;
     margin-left: 20px; }
+
+.chat-input {
+  margin: 10px;
+  width: 60%;
+  height: 50px;
+  border: none;
+  background-color: #ecf0f1;
+  overflow: auto;
+  font-size: 1.1em; }
+  .chat-input text-area {
+    resize: none; }
+
+.chat-pane ul {
+  max-height: 400px;
+  overflow: hidden auto;
+  overflow-y: scroll;
+  background: #ecf0f1;
+  padding-left: 0;
+  min-height: 400px; }
+.chat-pane li {
+  overflow-wrap: break-word;
+  list-style: none;
+  padding: 5px 20px;
+  border-bottom: solid #c4c4c4 1px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #2c3e50; }
 
 /*# sourceMappingURL=style.css.map */
